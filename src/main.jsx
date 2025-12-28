@@ -5,14 +5,17 @@ import App from './App.jsx'
 
 import { BrowserRouter } from 'react-router-dom';
 import LessonProvider from './Context/LessonProvider.jsx';
+import { AuthProvider } from './Context/AuthProvider.jsx';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
    <BrowserRouter>
-    <LessonProvider>
+   <AuthProvider>
+     <LessonProvider>
       <App />
     </LessonProvider>
+   </AuthProvider>
    </BrowserRouter>
   </StrictMode>,
 )
