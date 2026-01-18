@@ -1,0 +1,1196 @@
+{
+  "status": true,
+  "message": "successfully fetched all the words data",
+  "data": [
+    {
+      "id": 1,
+      "level": 3,
+      "word": "Abundant",
+      "meaning": null,
+      "pronunciation": "অবানডান্ট"
+    },
+    {
+      "id": 2,
+      "level": 6,
+      "word": "Benevolent",
+      "meaning": "দয়ালু",
+      "pronunciation": "বেনেভোলেন্ট"
+    },
+    {
+      "id": 3,
+      "level": 2,
+      "word": "Cautious",
+      "meaning": "সতর্ক",
+      "pronunciation": "কশাস"
+    },
+    {
+      "id": 4,
+      "level": 5,
+      "word": "Diligent",
+      "meaning": "পরিশ্রমী",
+      "pronunciation": "ডিলিজেন্ট"
+    },
+    {
+      "id": 5,
+      "level": 1,
+      "word": "Eager",
+      "meaning": "আগ্রহী",
+      "pronunciation": "ইগার"
+    },
+    {
+      "id": 6,
+      "level": 5,
+      "word": "Fascinate",
+      "meaning": "মুগ্ধ করা",
+      "pronunciation": "ফ্যাসিনেট"
+    },
+    {
+      "id": 7,
+      "level": 3,
+      "word": "Grateful",
+      "meaning": "কৃতজ্ঞ",
+      "pronunciation": "গ্রেটফুল"
+    },
+    {
+      "id": 8,
+      "level": 2,
+      "word": "Hesitate",
+      "meaning": "দ্বিধা করা",
+      "pronunciation": "হেজিটেট"
+    },
+    {
+      "id": 9,
+      "level": 5,
+      "word": "Illuminate",
+      "meaning": "আলোকিত করা",
+      "pronunciation": "ইলুমিনেট"
+    },
+    {
+      "id": 10,
+      "level": 6,
+      "word": "Jubilant",
+      "meaning": "আনন্দিত",
+      "pronunciation": "জুবিলান্ট"
+    },
+    {
+      "id": 11,
+      "level": 3,
+      "word": "Kindle",
+      "meaning": "জ্বালানো / উত্তেজিত করা",
+      "pronunciation": "কিন্ডল"
+    },
+    {
+      "id": 12,
+      "level": 2,
+      "word": "Linger",
+      "meaning": "থেমে থাকা / বিলম্ব করা",
+      "pronunciation": "লিঙ্গার"
+    },
+    {
+      "id": 13,
+      "level": 3,
+      "word": "Modest",
+      "meaning": "নম্র / বিনয়ী",
+      "pronunciation": "মডেস্ট"
+    },
+    {
+      "id": 14,
+      "level": 2,
+      "word": "Nourish",
+      "meaning": "পুষ্টি যোগানো",
+      "pronunciation": "নরিশ"
+    },
+    {
+      "id": 15,
+      "level": 5,
+      "word": "Obstinate",
+      "meaning": "একগুঁয়ে",
+      "pronunciation": "অবস্টিনেট"
+    },
+    {
+      "id": 16,
+      "level": 5,
+      "word": "Placid",
+      "meaning": "শান্ত",
+      "pronunciation": "প্ল্যাসিড"
+    },
+    {
+      "id": 17,
+      "level": 3,
+      "word": "Quaint",
+      "meaning": "নান্দনিকভাবে পুরোনো ধাঁচের",
+      "pronunciation": "কুয়েন্ট"
+    },
+    {
+      "id": 18,
+      "level": 2,
+      "word": "Reluctant",
+      "meaning": "অনিচ্ছুক",
+      "pronunciation": "রিলাকট্যান্ট"
+    },
+    {
+      "id": 19,
+      "level": 1,
+      "word": "Sincere",
+      "meaning": "সত্‍ / আন্তরিক",
+      "pronunciation": "সিনসিয়ার"
+    },
+    {
+      "id": 20,
+      "level": 6,
+      "word": "Tranquil",
+      "meaning": "শান্ত / নিরিবিলি",
+      "pronunciation": "ট্রাঙ্কুইল"
+    },
+    {
+      "id": 21,
+      "level": 3,
+      "word": "Uplift",
+      "meaning": "উদ্দীপিত করা / উন্নতি সাধন করা",
+      "pronunciation": "আপলিফট"
+    },
+    {
+      "id": 22,
+      "level": 2,
+      "word": "Vague",
+      "meaning": "অস্পষ্ট",
+      "pronunciation": "ভেইগ"
+    },
+    {
+      "id": 23,
+      "level": 5,
+      "word": "Wholesome",
+      "meaning": "পুষ্টিকর / স্বাস্থ্যকর",
+      "pronunciation": "হোউলসাম"
+    },
+    {
+      "id": 24,
+      "level": 3,
+      "word": "Yearn",
+      "meaning": "তীব্র আকাঙ্ক্ষা করা",
+      "pronunciation": "ইয়ার্ন"
+    },
+    {
+      "id": 25,
+      "level": 5,
+      "word": "Zealous",
+      "meaning": "উত্সাহী",
+      "pronunciation": "জেলাস"
+    },
+    {
+      "id": 26,
+      "level": 2,
+      "word": "Adore",
+      "meaning": "ভালবাসা / পূজা করা",
+      "pronunciation": "এডোর"
+    },
+    {
+      "id": 27,
+      "level": 3,
+      "word": "Brisk",
+      "meaning": "চটপটে / দ্রুত",
+      "pronunciation": "ব্রিস্ক"
+    },
+    {
+      "id": 28,
+      "level": 6,
+      "word": "Candid",
+      "meaning": "খোলামেলা / স্পষ্টবাদী",
+      "pronunciation": "ক্যানডিড"
+    },
+    {
+      "id": 29,
+      "level": 5,
+      "word": "Dwindle",
+      "meaning": "হ্রাস পাওয়া",
+      "pronunciation": "ডউইন্ডল"
+    },
+    {
+      "id": 30,
+      "level": 3,
+      "word": "Evoke",
+      "meaning": "জাগ্রত করা / উদ্দীপিত করা",
+      "pronunciation": "ইভোক"
+    },
+    {
+      "id": 31,
+      "level": 3,
+      "word": "Fascinate",
+      "meaning": "মুগ্ধ করা",
+      "pronunciation": "ফ্যাসিনেট"
+    },
+    {
+      "id": 32,
+      "level": 2,
+      "word": "Gloomy",
+      "meaning": "অন্ধকারাচ্ছন্ন / বিষণ্ণ",
+      "pronunciation": "গ্লুমি"
+    },
+    {
+      "id": 33,
+      "level": 3,
+      "word": "Humble",
+      "meaning": "নম্র / বিনয়ী",
+      "pronunciation": "হাম্বল"
+    },
+    {
+      "id": 34,
+      "level": 5,
+      "word": "Illuminate",
+      "meaning": null,
+      "pronunciation": "ইলুমিনেট"
+    },
+    {
+      "id": 35,
+      "level": 3,
+      "word": "Jovial",
+      "meaning": "আনন্দিত / হাসিখুশি",
+      "pronunciation": "জোভিয়াল"
+    },
+    {
+      "id": 36,
+      "level": 2,
+      "word": "Keen",
+      "meaning": "তীক্ষ্ণ / উৎসাহী",
+      "pronunciation": "কীন"
+    },
+    {
+      "id": 37,
+      "level": 6,
+      "word": "Lush",
+      "meaning": "সবুজে ভরা / সমৃদ্ধ",
+      "pronunciation": "লাশ"
+    },
+    {
+      "id": 38,
+      "level": 3,
+      "word": "Mourn",
+      "meaning": "শোক প্রকাশ করা",
+      "pronunciation": "মোর্ন"
+    },
+    {
+      "id": 39,
+      "level": 3,
+      "word": "Nimble",
+      "meaning": "চটপটে / দ্রুত",
+      "pronunciation": "নিম্বল"
+    },
+    {
+      "id": 40,
+      "level": 5,
+      "word": "Obscure",
+      "meaning": "অস্পষ্ট / অজানা",
+      "pronunciation": "অবস্কিউর"
+    },
+    {
+      "id": 41,
+      "level": 6,
+      "word": "Ponder",
+      "meaning": "ভেবে দেখা / গভীর চিন্তা করা",
+      "pronunciation": "পনডার"
+    },
+    {
+      "id": 42,
+      "level": 3,
+      "word": "Quaint",
+      "meaning": "পুরনো ধাঁচের কিন্তু আকর্ষণীয়",
+      "pronunciation": "কোয়েইন্ট"
+    },
+    {
+      "id": 43,
+      "level": 5,
+      "word": "Radiant",
+      "meaning": "উজ্জ্বল / দীপ্তিময়",
+      "pronunciation": "রেডিয়ান্ট"
+    },
+    {
+      "id": 44,
+      "level": 3,
+      "word": "Serene",
+      "meaning": "শান্ত / নিরিবিলি",
+      "pronunciation": "সারিন"
+    },
+    {
+      "id": 45,
+      "level": 6,
+      "word": "Tangible",
+      "meaning": "স্পর্শযোগ্য / বাস্তবসম্মত",
+      "pronunciation": "ট্যানজিবল"
+    },
+    {
+      "id": 46,
+      "level": 5,
+      "word": "Unravel",
+      "meaning": "উন্মোচন করা / খোলাসা করা",
+      "pronunciation": "আনর‍্যাভেল"
+    },
+    {
+      "id": 47,
+      "level": 5,
+      "word": "Venture",
+      "meaning": "ঝুঁকিপূর্ণ কাজ / সাহসী প্রচেষ্টা",
+      "pronunciation": "ভেনচার"
+    },
+    {
+      "id": 48,
+      "level": 3,
+      "word": "Witty",
+      "meaning": "বুদ্ধিদীপ্ত / তীক্ষ্ণ বুদ্ধির",
+      "pronunciation": "উইটি"
+    },
+    {
+      "id": 49,
+      "level": 6,
+      "word": "Yearning",
+      "meaning": "তীব্র আকাঙ্ক্ষা",
+      "pronunciation": "ইয়ার্নিং"
+    },
+    {
+      "id": 50,
+      "level": 5,
+      "word": "Zephyr",
+      "meaning": "মৃদু বাতাস / হালকা হাওয়া",
+      "pronunciation": "জেফার"
+    },
+    {
+      "id": 51,
+      "level": 5,
+      "word": "Adorn",
+      "meaning": "সাজানো / অলংকৃত করা",
+      "pronunciation": "অ্যাডর্ন"
+    },
+    {
+      "id": 52,
+      "level": 3,
+      "word": "Bewilder",
+      "meaning": "বিভ্রান্ত করা",
+      "pronunciation": "বিওয়াইল্ডার"
+    },
+    {
+      "id": 53,
+      "level": 3,
+      "word": "Candid",
+      "meaning": "খোলামেলা / স্পষ্টবাদী",
+      "pronunciation": "ক্যান্ডিড"
+    },
+    {
+      "id": 54,
+      "level": 6,
+      "word": "Diligent",
+      "meaning": "পরিশ্রমী / অধ্যবসায়ী",
+      "pronunciation": "ডিলিজেন্ট"
+    },
+    {
+      "id": 55,
+      "level": 5,
+      "word": "Eloquent",
+      "meaning": "বাকপটু / চমৎকার বক্তৃতা দিতে সক্ষম",
+      "pronunciation": "এলোকোয়েন্ট"
+    },
+    {
+      "id": 56,
+      "level": 2,
+      "word": "Frail",
+      "meaning": "দুর্বল / ভঙ্গুর",
+      "pronunciation": "ফ্রেইল"
+    },
+    {
+      "id": 57,
+      "level": 3,
+      "word": "Gracious",
+      "meaning": "দয়ালু / সদয়",
+      "pronunciation": "গ্রেসিয়াস"
+    },
+    {
+      "id": 58,
+      "level": 5,
+      "word": "Hinder",
+      "meaning": "বাধা দেওয়া / বিলম্ব ঘটানো",
+      "pronunciation": "হিন্দার"
+    },
+    {
+      "id": 59,
+      "level": 6,
+      "word": "Impartial",
+      "meaning": "নিরপেক্ষ / পক্ষপাতহীন",
+      "pronunciation": "ইম্পারশিয়াল"
+    },
+    {
+      "id": 60,
+      "level": 3,
+      "word": "Jubilant",
+      "meaning": "আনন্দে উৎফুল্ল",
+      "pronunciation": "জুবিলান্ট"
+    },
+    {
+      "id": 61,
+      "level": 3,
+      "word": "Keen",
+      "meaning": "উত্সাহী / তীক্ষ্ণ",
+      "pronunciation": "কীন"
+    },
+    {
+      "id": 62,
+      "level": 5,
+      "word": "Linger",
+      "meaning": "অবশিষ্ট থাকা / বিলম্ব করা",
+      "pronunciation": "লিঙ্গার"
+    },
+    {
+      "id": 63,
+      "level": 3,
+      "word": "Meager",
+      "meaning": "অত্যল্প / নগণ্য",
+      "pronunciation": "মীগার"
+    },
+    {
+      "id": 64,
+      "level": 5,
+      "word": "Notorious",
+      "meaning": "কুখ্যাত / বদনামি",
+      "pronunciation": "নোটোরিয়াস"
+    },
+    {
+      "id": 65,
+      "level": 6,
+      "word": "Oblivious",
+      "meaning": "অসচেতন / ভুলে যাওয়া",
+      "pronunciation": "অব্লিভিয়াস"
+    },
+    {
+      "id": 66,
+      "level": 5,
+      "word": "Pristine",
+      "meaning": "অকৃত্রিম / সম্পূর্ণ বিশুদ্ধ",
+      "pronunciation": "প্রিস্টিন"
+    },
+    {
+      "id": 67,
+      "level": 3,
+      "word": "Quiver",
+      "meaning": null,
+      "pronunciation": "কুইভার"
+    },
+    {
+      "id": 68,
+      "level": 5,
+      "word": "Reckless",
+      "meaning": "উন্মত্ত / অবিবেচক",
+      "pronunciation": "রেকলেস"
+    },
+    {
+      "id": 69,
+      "level": 6,
+      "word": "Subtle",
+      "meaning": "সূক্ষ্ম / কঠিনে বোঝা যায় এমন",
+      "pronunciation": "সাটল"
+    },
+    {
+      "id": 70,
+      "level": 3,
+      "word": "Tedious",
+      "meaning": "বিরক্তিকর / ক্লান্তিকর",
+      "pronunciation": "টিডিয়াস"
+    },
+    {
+      "id": 71,
+      "level": 1,
+      "word": "Apple",
+      "meaning": "আপেল",
+      "pronunciation": "অ্যাপল"
+    },
+    {
+      "id": 72,
+      "level": 1,
+      "word": "Big",
+      "meaning": "বড়",
+      "pronunciation": "বিগ"
+    },
+    {
+      "id": 73,
+      "level": 1,
+      "word": "Cat",
+      "meaning": "বিড়াল",
+      "pronunciation": "ক্যাট"
+    },
+    {
+      "id": 74,
+      "level": 1,
+      "word": "Dog",
+      "meaning": "কুকুর",
+      "pronunciation": "ডগ"
+    },
+    {
+      "id": 75,
+      "level": 1,
+      "word": "Eat",
+      "meaning": "খাওয়া",
+      "pronunciation": "ইট"
+    },
+    {
+      "id": 76,
+      "level": 1,
+      "word": "Fast",
+      "meaning": "দ্রুত",
+      "pronunciation": "ফাস্ট"
+    },
+    {
+      "id": 77,
+      "level": 1,
+      "word": "Go",
+      "meaning": "যাওয়া",
+      "pronunciation": "গো"
+    },
+    {
+      "id": 78,
+      "level": 1,
+      "word": "Hot",
+      "meaning": "গরম",
+      "pronunciation": "হট"
+    },
+    {
+      "id": 79,
+      "level": 1,
+      "word": "Jump",
+      "meaning": "লাফানো",
+      "pronunciation": "জাম্প"
+    },
+    {
+      "id": 80,
+      "level": 1,
+      "word": "Run",
+      "meaning": "দৌড়ানো",
+      "pronunciation": "রান"
+    },
+    {
+      "id": 81,
+      "level": 1,
+      "word": "Ball",
+      "meaning": "বল",
+      "pronunciation": "বল"
+    },
+    {
+      "id": 82,
+      "level": 1,
+      "word": "Car",
+      "meaning": "গাড়ি",
+      "pronunciation": "কার"
+    },
+    {
+      "id": 83,
+      "level": 1,
+      "word": "Door",
+      "meaning": "দরজা",
+      "pronunciation": "ডোর"
+    },
+    {
+      "id": 84,
+      "level": 1,
+      "word": "Fish",
+      "meaning": "মাছ",
+      "pronunciation": "ফিশ"
+    },
+    {
+      "id": 85,
+      "level": 1,
+      "word": "Hat",
+      "meaning": "টুপি",
+      "pronunciation": "হ্যাট"
+    },
+    {
+      "id": 86,
+      "level": 1,
+      "word": "Milk",
+      "meaning": "দুধ",
+      "pronunciation": "মিল্ক"
+    },
+    {
+      "id": 87,
+      "level": 1,
+      "word": "Sun",
+      "meaning": "সূর্য",
+      "pronunciation": "সান"
+    },
+    {
+      "id": 88,
+      "level": 1,
+      "word": "Toy",
+      "meaning": "খেলনা",
+      "pronunciation": "টয়"
+    },
+    {
+      "id": 89,
+      "level": 1,
+      "word": "Tree",
+      "meaning": "গাছ",
+      "pronunciation": "ট্রি"
+    },
+    {
+      "id": 90,
+      "level": 1,
+      "word": "Water",
+      "meaning": "পানি",
+      "pronunciation": "ওয়াটার"
+    },
+    {
+      "id": 91,
+      "level": 2,
+      "word": "Angry",
+      "meaning": "রাগান্বিত",
+      "pronunciation": "এংগ্রি"
+    },
+    {
+      "id": 92,
+      "level": 2,
+      "word": "Brave",
+      "meaning": "সাহসী",
+      "pronunciation": "ব্রেভ"
+    },
+    {
+      "id": 93,
+      "level": 2,
+      "word": "Cold",
+      "meaning": "ঠাণ্ডা",
+      "pronunciation": "কোল্ড"
+    },
+    {
+      "id": 94,
+      "level": 2,
+      "word": "Dance",
+      "meaning": "নৃত্য",
+      "pronunciation": "ডান্স"
+    },
+    {
+      "id": 95,
+      "level": 2,
+      "word": "Easy",
+      "meaning": "সহজ",
+      "pronunciation": "ইজি"
+    },
+    {
+      "id": 96,
+      "level": 2,
+      "word": "Friend",
+      "meaning": "বন্ধু",
+      "pronunciation": "ফ্রেন্ড"
+    },
+    {
+      "id": 97,
+      "level": 2,
+      "word": "Happy",
+      "meaning": "সুখী",
+      "pronunciation": "হ্যাপি"
+    },
+    {
+      "id": 98,
+      "level": 2,
+      "word": "Jump",
+      "meaning": "লাফানো",
+      "pronunciation": "জাম্প"
+    },
+    {
+      "id": 99,
+      "level": 2,
+      "word": "Kind",
+      "meaning": "দয়ালু",
+      "pronunciation": "কাইন্ড"
+    },
+    {
+      "id": 100,
+      "level": 2,
+      "word": "Love",
+      "meaning": null,
+      "pronunciation": "লভ"
+    },
+    {
+      "id": 101,
+      "level": 2,
+      "word": "Market",
+      "meaning": "বাজার",
+      "pronunciation": "মার্কেট"
+    },
+    {
+      "id": 102,
+      "level": 2,
+      "word": "Night",
+      "meaning": "রাত্রি",
+      "pronunciation": "নাইট"
+    },
+    {
+      "id": 103,
+      "level": 2,
+      "word": "Open",
+      "meaning": "খোলা",
+      "pronunciation": "ওপেন"
+    },
+    {
+      "id": 104,
+      "level": 2,
+      "word": "Quiet",
+      "meaning": "নীরব",
+      "pronunciation": "কুয়েট"
+    },
+    {
+      "id": 105,
+      "level": 2,
+      "word": "Rain",
+      "meaning": "বৃষ্টি",
+      "pronunciation": "রেইন"
+    },
+    {
+      "id": 106,
+      "level": 2,
+      "word": "Sleep",
+      "meaning": "ঘুমানো",
+      "pronunciation": "স্লিপ"
+    },
+    {
+      "id": 107,
+      "level": 2,
+      "word": "Talk",
+      "meaning": "কথা বলা",
+      "pronunciation": "টক"
+    },
+    {
+      "id": 108,
+      "level": 2,
+      "word": "Train",
+      "meaning": "ট্রেন",
+      "pronunciation": "ট্রেন"
+    },
+    {
+      "id": 109,
+      "level": 2,
+      "word": "Walk",
+      "meaning": "হাঁটা",
+      "pronunciation": "ওয়াক"
+    },
+    {
+      "id": 110,
+      "level": 2,
+      "word": "Yellow",
+      "meaning": "হলুদ",
+      "pronunciation": "ইয়েলো"
+    },
+    {
+      "id": 111,
+      "level": 5,
+      "word": "Accomplish",
+      "meaning": "সম্পন্ন করা",
+      "pronunciation": "অ্যাকমপ্লিশ"
+    },
+    {
+      "id": 112,
+      "level": 6,
+      "word": "Benevolent",
+      "meaning": "দয়ালু",
+      "pronunciation": "বিনেভোলেন্ট"
+    },
+    {
+      "id": 113,
+      "level": 5,
+      "word": "Cautious",
+      "meaning": "সতর্ক",
+      "pronunciation": "কাউশাস"
+    },
+    {
+      "id": 114,
+      "level": 6,
+      "word": "Diligent",
+      "meaning": "পরিশ্রমী",
+      "pronunciation": "ডিলিজেন্ট"
+    },
+    {
+      "id": 115,
+      "level": 5,
+      "word": "Eloquent",
+      "meaning": "প্রभावশালী",
+      "pronunciation": "এলোকুয়েন্ট"
+    },
+    {
+      "id": 116,
+      "level": 6,
+      "word": "Frustrated",
+      "meaning": "বিক্ষুব্ধ",
+      "pronunciation": "ফ্রাস্ট্রেটেড"
+    },
+    {
+      "id": 117,
+      "level": 5,
+      "word": "Hesitate",
+      "meaning": "দ্বিধা করা",
+      "pronunciation": "হেসিটেট"
+    },
+    {
+      "id": 118,
+      "level": 6,
+      "word": "Inspire",
+      "meaning": "অনুপ্রাণিত করা",
+      "pronunciation": "ইনস্পায়ার"
+    },
+    {
+      "id": 119,
+      "level": 5,
+      "word": "Judicious",
+      "meaning": "বিচক্ষণ",
+      "pronunciation": "জুডিশিয়াস"
+    },
+    {
+      "id": 120,
+      "level": 6,
+      "word": "Keen",
+      "meaning": "তীক্ষ্ণ",
+      "pronunciation": "কীন"
+    },
+    {
+      "id": 121,
+      "level": 5,
+      "word": "Luminous",
+      "meaning": "উজ্জ্বল",
+      "pronunciation": "লুমিনাস"
+    },
+    {
+      "id": 122,
+      "level": 6,
+      "word": "Melancholy",
+      "meaning": "দুঃখভারাক্রান্ত",
+      "pronunciation": "মেলাঙ্কলি"
+    },
+    {
+      "id": 123,
+      "level": 5,
+      "word": "Nurture",
+      "meaning": "পালন করা",
+      "pronunciation": "নার্চার"
+    },
+    {
+      "id": 124,
+      "level": 6,
+      "word": "Oblivious",
+      "meaning": "অবহেলিত",
+      "pronunciation": "অব্লিভিয়াস"
+    },
+    {
+      "id": 125,
+      "level": 5,
+      "word": "Perplexed",
+      "meaning": "ভ্ব্রান্ত",
+      "pronunciation": "পারপ্লেক্সড"
+    },
+    {
+      "id": 126,
+      "level": 6,
+      "word": "Quaint",
+      "meaning": "অদ্ভুত ও সুন্দর",
+      "pronunciation": "কোয়েন্ট"
+    },
+    {
+      "id": 127,
+      "level": 5,
+      "word": "Resilient",
+      "meaning": "অবিচলিত",
+      "pronunciation": "রেজিলিয়েন্ট"
+    },
+    {
+      "id": 128,
+      "level": 6,
+      "word": "Subtle",
+      "meaning": "সূক্ষ্ম",
+      "pronunciation": "সাবটল"
+    },
+    {
+      "id": 129,
+      "level": 5,
+      "word": "Thwart",
+      "meaning": "বাধা সৃষ্টি করা",
+      "pronunciation": "থওর্ত"
+    },
+    {
+      "id": 130,
+      "level": 6,
+      "word": "Vivid",
+      "meaning": "স্পষ্ট",
+      "pronunciation": "ভিভিড"
+    },
+    {
+      "id": 131,
+      "level": 5,
+      "word": "Absurd",
+      "meaning": "অকেশনীয়",
+      "pronunciation": "অ্যাবসার্ড"
+    },
+    {
+      "id": 132,
+      "level": 5,
+      "word": "Benevolence",
+      "meaning": "দয়া",
+      "pronunciation": "বিনেভোলেন্স"
+    },
+    {
+      "id": 133,
+      "level": 5,
+      "word": "Camaraderie",
+      "meaning": null,
+      "pronunciation": "ক্যামারাডারি"
+    },
+    {
+      "id": 134,
+      "level": 5,
+      "word": "Dissonance",
+      "meaning": "অসঙ্গতি",
+      "pronunciation": "ডিসোন্যান্স"
+    },
+    {
+      "id": 135,
+      "level": 5,
+      "word": "Euphoria",
+      "meaning": "আনন্দের অনুভূতি",
+      "pronunciation": "ইউফোরিয়া"
+    },
+    {
+      "id": 136,
+      "level": 5,
+      "word": "Finesse",
+      "meaning": "দক্ষতা",
+      "pronunciation": "ফিনেস"
+    },
+    {
+      "id": 137,
+      "level": 5,
+      "word": "Grievance",
+      "meaning": "অভিযোগ",
+      "pronunciation": "গ্রিভেন্স"
+    },
+    {
+      "id": 138,
+      "level": 5,
+      "word": "Impeccable",
+      "meaning": "অকৃতদোষ",
+      "pronunciation": "ইমপেকেবল"
+    },
+    {
+      "id": 139,
+      "level": 5,
+      "word": "Juxtapose",
+      "meaning": "অংশবিশেষ তুলনা করা",
+      "pronunciation": "জাক্সটাপোজ"
+    },
+    {
+      "id": 140,
+      "level": 5,
+      "word": "Kaleidoscope",
+      "meaning": "রঙিন কাচের গ্লাস",
+      "pronunciation": "ক্যালাইডোস্কোপ"
+    },
+    {
+      "id": 141,
+      "level": 5,
+      "word": "Lethargic",
+      "meaning": "অসুস্থ বা নিষ্ক্রিয়",
+      "pronunciation": "লিথারজিক"
+    },
+    {
+      "id": 142,
+      "level": 5,
+      "word": "Mitigate",
+      "meaning": "কমানো",
+      "pronunciation": "মিটিগেট"
+    },
+    {
+      "id": 143,
+      "level": 5,
+      "word": "Nebulous",
+      "meaning": "অস্পষ্ট",
+      "pronunciation": "নেবিউলাস"
+    },
+    {
+      "id": 144,
+      "level": 5,
+      "word": "Ostentatious",
+      "meaning": "প্রদর্শনমূলক",
+      "pronunciation": "অস্টেন্টেশন"
+    },
+    {
+      "id": 145,
+      "level": 5,
+      "word": "Pragmatic",
+      "meaning": "ব্যবহারিক",
+      "pronunciation": "প্রাগম্যাটিক"
+    },
+    {
+      "id": 146,
+      "level": 5,
+      "word": "Quixotic",
+      "meaning": "অসম্ভব ও আবেগপ্রবণ",
+      "pronunciation": "কুইক্সটিক"
+    },
+    {
+      "id": 147,
+      "level": 5,
+      "word": "Recalcitrant",
+      "meaning": "অধিকারী নয় এমন",
+      "pronunciation": "রিক্যালসিট্রান্ট"
+    },
+    {
+      "id": 148,
+      "level": 5,
+      "word": "Supercilious",
+      "meaning": "অহঙ্কারী",
+      "pronunciation": "সুপারসিলিয়াস"
+    },
+    {
+      "id": 149,
+      "level": 5,
+      "word": "Tranquil",
+      "meaning": "শান্ত",
+      "pronunciation": "ট্রাঙ্কুইল"
+    },
+    {
+      "id": 150,
+      "level": 5,
+      "word": "Vindicate",
+      "meaning": "পাল্টানো",
+      "pronunciation": "ভিন্ডিকেট"
+    },
+    {
+      "id": 151,
+      "level": 6,
+      "word": "Altruism",
+      "meaning": "পরার্থপরতা",
+      "pronunciation": "আলট্রুইজম"
+    },
+    {
+      "id": 152,
+      "level": 6,
+      "word": "Cacophony",
+      "meaning": "শোরগোল",
+      "pronunciation": "কাকোফনি"
+    },
+    {
+      "id": 153,
+      "level": 6,
+      "word": "Dichotomy",
+      "meaning": "দ্বৈততা",
+      "pronunciation": "ডাইকোটোমি"
+    },
+    {
+      "id": 154,
+      "level": 6,
+      "word": "Exacerbate",
+      "meaning": "তীব্র করা",
+      "pronunciation": "এক্সাসারবেট"
+    },
+    {
+      "id": 155,
+      "level": 6,
+      "word": "Fastidious",
+      "meaning": "অতিমাত্রায় নিখুঁত",
+      "pronunciation": "ফাস্টিডিয়াস"
+    },
+    {
+      "id": 156,
+      "level": 6,
+      "word": "Gregarious",
+      "meaning": "সামাজিক",
+      "pronunciation": "গ্রেগেরিয়াস"
+    },
+    {
+      "id": 157,
+      "level": 6,
+      "word": "Harangue",
+      "meaning": "নিরবচ্ছিন্ন বক্তৃতা",
+      "pronunciation": "হ্যারাঙ্গ"
+    },
+    {
+      "id": 158,
+      "level": 6,
+      "word": "Inexorable",
+      "meaning": "অবশ্যম্ভাবী",
+      "pronunciation": "ইনেক্সোরেবল"
+    },
+    {
+      "id": 159,
+      "level": 6,
+      "word": "Juxtaposition",
+      "meaning": "পাশাপাশি স্থাপন",
+      "pronunciation": "জাক্সটাপজিশন"
+    },
+    {
+      "id": 160,
+      "level": 6,
+      "word": "Kinetic",
+      "meaning": "গতি সম্পর্কিত",
+      "pronunciation": "কাইনেটিক"
+    },
+    {
+      "id": 161,
+      "level": 6,
+      "word": "Lugubrious",
+      "meaning": "শোকসন্তপ্ত",
+      "pronunciation": "লুগুব্রিয়াস"
+    },
+    {
+      "id": 162,
+      "level": 6,
+      "word": "Nefarious",
+      "meaning": "অত্যাচারী",
+      "pronunciation": "নেফ্যারিয়াস"
+    },
+    {
+      "id": 163,
+      "level": 6,
+      "word": "Obfuscate",
+      "meaning": "ধোঁকা দেওয়া",
+      "pronunciation": "অবফাসকেট"
+    },
+    {
+      "id": 164,
+      "level": 6,
+      "word": "Pernicious",
+      "meaning": "হানিকর",
+      "pronunciation": "পার্নিশাস"
+    },
+    {
+      "id": 165,
+      "level": 6,
+      "word": "Quagmire",
+      "meaning": "কাদা জায়গা",
+      "pronunciation": "কুয়াগমায়ার"
+    },
+    {
+      "id": 166,
+      "level": 6,
+      "word": "Recalcitrant",
+      "meaning": null,
+      "pronunciation": "রিক্যালসিট্রান্ট"
+    },
+    {
+      "id": 167,
+      "level": 6,
+      "word": "Sycophant",
+      "meaning": "চাটুকার",
+      "pronunciation": "সাইকোফ্যান্ট"
+    },
+    {
+      "id": 168,
+      "level": 6,
+      "word": "Tantamount",
+      "meaning": "সমান পরিমাণ",
+      "pronunciation": "ট্যান্টামাউন্ট"
+    },
+    {
+      "id": 169,
+      "level": 6,
+      "word": "Ubiquitous",
+      "meaning": "সর্বত্র বিদ্যমান",
+      "pronunciation": "ইউবিকুইটাস"
+    },
+    {
+      "id": 170,
+      "level": 6,
+      "word": "Vicarious",
+      "meaning": "পরোক্ষভাবে অনুভূতি গ্রহণ করা",
+      "pronunciation": "ভিকেরিয়াস"
+    }
+  ]
+}

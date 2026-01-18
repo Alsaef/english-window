@@ -7,7 +7,7 @@ export default function AboutUs() {
       <img src={about} alt="About Us" className="w-full max-w-3xl rounded-xl shadow-md" />
     </div>
     <div className="w-full min-h-screen bg-gray-50 px-6 py-12">
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-10">
+      <div className=" bg-white rounded-2xl shadow-lg p-10">
         <h1 className="text-3xl font-bold text-center mb-6 text-blue-600">About Us</h1>
 
         <p className="text-gray-700 text-lg leading-relaxed mb-6">
