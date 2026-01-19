@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { lessonContext } from '../Context/LessonProvider';
 import { FaBook } from "react-icons/fa";
+import useGetAllVocabulary from '../Hook/useGetAllVocabulary';
+import CountUp from 'react-countup';
 
 const LessonToggle = () => {
     const {toggleBtn,setselectLesson,selectLesson}=useContext(lessonContext)
-    
+     const [totalV]=useGetAllVocabulary()
+
     const handelFetchLession=(level)=>{
         console.log(level);
         setselectLesson(level)
@@ -12,7 +15,8 @@ const LessonToggle = () => {
     }
     return (
         <div className='mt-24'>
-            <h2 className='lg:text-4xl text-2xl text-center font-bold'><span className='text-sky-400 '>Let's </span>Learn Vocabularies</h2>
+            <h2 className='lg:text-4xl text-2xl text-center font-bold'><span className='text-sky-400 '>Let's </span>Learn Vocabularies <CountUp  duration={3.75} end={totalV?.length} />
+ </h2>
             <div className='flex flex-wrap gap-2 justify-center my-14'>
                 {
                     toggleBtn.map(btn=>(

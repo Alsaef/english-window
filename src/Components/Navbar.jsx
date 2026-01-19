@@ -25,8 +25,8 @@ const Navbar = () => {
       </ul>
     </div>
     <a className="btn btn-ghost text-xl">
-        <img src={logo} alt="" />
-       <span className='lg:text-2xl text-xl font-semibold'>English Window</span>
+        <img src={logo} width={30} alt="" />
+       <span className='lg:text-xl text-xl font-semibold'>English Window</span>
     </a>
   </div>
   <div className="navbar-center hidden lg:flex">
