@@ -7,23 +7,21 @@ const LessonProvider = ({children}) => {
       const [selectLesson,setselectLesson]=useState('')
     const [loading,setLoading]=useState(false)
 
-   const fetchToggleFn=async()=> {
+   const fetchToggleFn=async(apiUrl)=> {
       try {
-          const res=await axios.get('https://openapi.programming-hero.com/api/levels/all')
+          const res=await axios.get(`${apiUrl}`)
 
           setToggleBtn(res.data.data)
       } catch (error) {
         console.log(error.message);
       }
     }
-    useEffect(()=>{
-     fetchToggleFn()
-    },[])
+ 
 
-    const fetchShowlesson=async()=>{
+    const fetchShowlesson=async(apiUrl)=>{
         setLoading(true)
         try {
-           const res=await axios(`https://openapi.programming-hero.com/api/level/${selectLesson}`) 
+           const res=await axios(`${apiUrl}`) 
 
            setshowLesson(res?.data?.data)
            setLoading(false)
@@ -34,14 +32,10 @@ const LessonProvider = ({children}) => {
         }
     }
 
-    useEffect(()=>{
-       if(selectLesson) {
-        fetchShowlesson();
-    }
-    },[selectLesson])
+  
 
     return (
-       <lessonContext.Provider  value={{ toggleBtn, showLesson, loading, fetchShowlesson, selectLesson, setselectLesson}}>
+       <lessonContext.Provider  value={{ toggleBtn, showLesson, loading, fetchShowlesson, selectLesson, setselectLesson, setshowLesson, fetchToggleFn}}>
         {children}
        </lessonContext.Provider>
     );

@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { lessonContext } from '../Context/LessonProvider';
 import { AiOutlineWarning } from "react-icons/ai"
 import VocabularyCard from './VocabularyCard';
 import Loading from './Loading';
 import LessonNotFound from './LessonNotFound';
-const ShowLesson = () => {
-    const { selectLesson, loading, showLesson } = useContext(lessonContext);
+const ShowLesson = ({showLessonApi}) => {
+    const { selectLesson, loading, fetchShowlesson, showLesson ,setshowLesson,setselectLesson} = useContext(lessonContext);
 
+    
+    
+      useEffect(()=>{
+           if(selectLesson) {
+            fetchShowlesson(`${showLessonApi}${selectLesson}`);
+        }
+   
+        },[selectLesson])
 
     if (loading) {
         return (

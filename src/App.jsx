@@ -9,6 +9,7 @@ import Login from './Components/Login';
 import Register from './Components/Register';
 import ContactUs from './Components/ContactUs';
 import Private from './Private/Private';
+import UpdateVocabulary from './Components/UpdateVocabulary';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<ContactUs />} />
+           <Route path="/update-vocabulary" element={<UpdateVocabulary />} />
         </Routes>
       </div>
       <Footer></Footer>

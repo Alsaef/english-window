@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { FiInfo, FiVolume2 } from "react-icons/fi";
 import VocabularyInfo from "./VocabularyInfo";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const VocabularyCard = ({ show }) => {
+  
   const [info, setInfo] = useState(null);
   const [open, setOpen] = useState(false);
 
+  const path=useLocation()
   const handelSpeech = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
     speechSynthesis.cancel(); // prevents overlapping
@@ -17,6 +20,18 @@ const VocabularyCard = ({ show }) => {
     try {
       const res = await axios.get(
         `https://openapi.programming-hero.com/api/word/${id}`
+      );
+      setInfo(res.data.data);
+      setOpen(true); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+    const handelInfoOwn = async (id) => {
+    try {
+      const res = await axios.get(
+        `https://english-window-server.vercel.app/vocabularydetails/${id}`
       );
       setInfo(res.data.data);
       setOpen(true); 
@@ -38,7 +53,7 @@ const VocabularyCard = ({ show }) => {
 
         <div className="w-full flex justify-between">
           <button
-            onClick={() => handelInfo(show.id)}
+            onClick={() => path.pathname==='/'?handelInfo(show.id):handelInfoOwn(show._id)}
             className="bg-white p-3 rounded-lg shadow hover:bg-gray-200 transition"
           >
             <FiInfo size={20} />
