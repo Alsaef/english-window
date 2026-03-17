@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FiVolume2 } from "react-icons/fi";
 
 // Lesson 1 Words
 const level1Words = [
@@ -60,6 +61,142 @@ const level2Words = [
   { "id": 110, "level": 2, "word": "Yellow", "meaning": "হলুদ", "pronunciation": "ইয়েলো" }
 ];
 
+const level3Words = [
+  {
+    "id": 7,
+    "level": 3,
+    "word": "Grateful",
+    "meaning": "কৃতজ্ঞ",
+    "pronunciation": "গ্রেটফুল",
+    "question": "Choose the correct meaning for 'Grateful':",
+    "options": ["দয়ালু", "রাগী", "কৃতজ্ঞ", "অহংকারী"],
+    "answer": "কৃতজ্ঞ"
+  },
+  {
+    "id": 13,
+    "level": 3,
+    "word": "Modest",
+    "meaning": "নম্র / বিনয়ী",
+    "pronunciation": "মডেস্ট",
+    "question": "Which one describes 'Modest'?",
+    "options": ["নম্র", "চালু", "গম্ভীর", "দ্রুত"],
+    "answer": "নম্র"
+  },
+  {
+    "id": 27,
+    "level": 3,
+    "word": "Brisk",
+    "meaning": "চটপটে / দ্রুত",
+    "pronunciation": "ব্রিস্ক",
+    "question": "The word 'Brisk' is best defined as:",
+    "options": ["ধীর", "চটপটে", "শান্ত", "পুরানো"],
+    "answer": "চটপটে"
+  },
+  {
+    "id": 31,
+    "level": 3,
+    "word": "Fascinate",
+    "meaning": "মুগ্ধ করা",
+    "pronunciation": "ফ্যাসিনেট",
+    "question": "What does 'Fascinate' mean?",
+    "options": ["ভয় দেখানো", "মুগ্ধ করা", "ঘৃণা করা", "উপেক্ষা করা"],
+    "answer": "মুগ্ধ করা"
+  },
+  {
+    "id": 35,
+    "level": 3,
+    "word": "Jovial",
+    "meaning": "আনন্দিত / হাসিখুশি",
+    "pronunciation": "জোভিয়াল",
+    "question": "Identify the meaning of 'Jovial':",
+    "options": ["বিরক্ত", "কান্নায় ভেঙে পড়া", "হাসিখুশি", "ভীত"],
+    "answer": "হাসিখুশি"
+  },
+  {
+    "id": 44,
+    "level": 3,
+    "word": "Serene",
+    "meaning": "শান্ত / নিরিবিলি",
+    "pronunciation": "সারিন",
+    "question": "What is the meaning of 'Serene'?",
+    "options": ["শান্ত", "উত্তেজিত", "বিপজ্জনক", "গোলমালপূর্ণ"],
+    "answer": "শান্ত"
+  },
+  {
+    "id": 52,
+    "level": 3,
+    "word": "Bewilder",
+    "meaning": "বিভ্রান্ত করা",
+    "pronunciation": "বিওয়াইল্ডার",
+    "question": "The word 'Bewilder' means:",
+    "options": ["পরিষ্কার করা", "সাহায্য করা", "বিভ্রান্ত করা", "শিখানো"],
+    "answer": "বিভ্রান্ত করা"
+  },
+  {
+    "id": 63,
+    "level": 3,
+    "word": "Meager",
+    "meaning": "অত্যল্প / নগণ্য",
+    "pronunciation": "মীগার",
+    "question": "What is the correct meaning of 'Meager'?",
+    "options": ["বিশাল", "অত্যল্প", "মিষ্টি", "কঠিন"],
+    "answer": "অত্যল্প"
+  },
+  {
+    "id": 70,
+    "level": 3,
+    "word": "Tedious",
+    "meaning": "বিরক্তিকর / ক্লান্তিকর",
+    "pronunciation": "টিডিয়াস",
+    "question": "Choose the meaning of 'Tedious':",
+    "options": ["মজাদার", "সহজ", "ক্লান্তিকর", "নতুন"],
+    "answer": "ক্লান্তিকর"
+  },
+
+  {
+    "id": 71,
+    "level": 3,
+    "word": "Humble",
+    "meaning": "নম্র / বিনয়ী",
+    "pronunciation": "হাম্বল",
+    "question": "Choose the meaning of 'Humble':",
+    "options": ["মজাদার", "সহজ", "ক্লান্তিকর", "বিনয়ী"],
+    "answer": "বিনয়ী"
+  }
+  ,
+  {
+    "id": 72,
+    "level": 3,
+    "word": "Witty",
+    "meaning": "বুদ্ধিদীপ্ত / তীক্ষ্ণ বুদ্ধির",
+    "pronunciation": "উইটি",
+    "question": "Choose the meaning of 'Witty':",
+    "options": ["মজাদার", "সহজ", "ক্লান্তিকর", "তীক্ষ্ণ বুদ্ধির"],
+    "answer": "তীক্ষ্ণ বুদ্ধির"
+  },
+  {
+    "id": 73,
+    "level": 3,
+    "word": "Keen",
+    "meaning": "উত্সাহী / তীক্ষ্ণ",
+    "pronunciation": "কীন",
+    "question": "Choose the meaning of 'Keen':",
+    "options": ["মজাদার", "সহজ", "ক্লান্তিকর", "তীক্ষ্ণ"],
+    "answer": "তীক্ষ্ণ"
+  }
+  ,
+  {
+    "id": 74,
+    "level": 3,
+    "word": "Candid",
+    "meaning": "খোলামেলা / স্পষ্টবাদী",
+    "pronunciation": "ক্যান্ডিড",
+    "question": "Choose the meaning of 'Candid':",
+    "options": ["মজাদার", "সহজ", "নগণ্য", "স্পষ্টবাদী"],
+    "answer": "স্পষ্টবাদী"
+  }
+]
+
 function shuffle(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
@@ -70,7 +207,7 @@ export default function Test() {
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
-  const words = level === 1 ? level1Words : level2Words;
+  const words = level === 1 ? level1Words : level2Words && level === 2 ? level2Words : level3Words;
   const question = words[current];
   const otherOptions = shuffle(words.filter(w => w.id !== question.id && w.meaning)).slice(0, 3);
   const options = shuffle([question.meaning, ...otherOptions.map(o => o.meaning)]);
@@ -91,6 +228,12 @@ export default function Test() {
     setFinished(false);
   };
 
+
+  const handelSpeech = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    speechSynthesis.cancel(); // prevents overlapping
+    speechSynthesis.speak(utterance);
+  };
   return (
     <div className="px-6 py-10">
       <h1 className="text-center text-3xl font-bold text-blue-600 mb-6">
@@ -111,6 +254,12 @@ export default function Test() {
         >
           Lesson 2 Test
         </button>
+        <button
+          onClick={() => { setLevel(3); restart(); }}
+          className={level === 3 ? "btn bg-[#422AD5] text-white" : "btn border-[#422AD5] bg-white border-2 text-[#422AD5] hover:bg-[#422AD5] hover:text-white"}
+        >
+          Lesson 3 Test
+        </button>
       </div>
 
       {finished ? (
@@ -124,7 +273,9 @@ export default function Test() {
       ) : (
         <div className="max-w-xl mx-auto bg-white rounded-2xl shadow p-8">
           <h2 className="text-xl font-semibold mb-6">
-            What is the meaning of: <span className="text-blue-600">{question.word}?</span>
+            What is the meaning of: <span className="text-blue-600">{question.word}?</span> <button onClick={() => handelSpeech(question.word)}  className="badge badge-outline text-xl py-2 cursor-pointer">
+            <FiVolume2 size={15} />
+            </button>
           </h2>
 
           <div className="space-y-4">
