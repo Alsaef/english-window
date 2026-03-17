@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase.init';
+import SocialLogin from './SocialLogin';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -79,6 +80,7 @@ const Register = () => {
                         Login
                     </button>
                 </p>
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase.init';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -45,6 +46,8 @@ const Login = () => {
                 <p className="mt-4 text-sm text-center">
                     New here? <Link to={'/register'}><span className="text-indigo-500 cursor-pointer">Create an account</span></Link>
                 </p>
+
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );
