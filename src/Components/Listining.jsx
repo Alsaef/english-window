@@ -34,7 +34,7 @@ const MovieVocab = () => {
         {movies.map((movie) => (
           <div
             key={movie._id}
-            className="border border-blue-500 rounded-xl p-4 shadow-md hover:scale-110 duration-200"
+            className="border border-blue-500 rounded-xl p-4 shadow-md hover:scale-110 duration-200 z-20"
           >
             <h2 className="text-xl font-semibold mb-2 text-blue-500">
               {movie.movieName}
