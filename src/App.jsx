@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<ContactUs />} />
            <Route path="/update-vocabulary" element={<UpdateVocabulary />} />
-            <Route path="/listening" element={<VocabularyPage />} />
+            <Route path="/movies-vocab" element={<VocabularyPage />} />
         </Routes>
       </div>
       <Footer></Footer>
