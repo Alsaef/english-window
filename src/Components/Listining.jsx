@@ -1,59 +1,260 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import axios from "axios";
+import {
+  Search,
+  Film,
+  ExternalLink
+} from "lucide-react";
 
 const MovieVocab = () => {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] =
+    useState(true);
+  const [search, setSearch] =
+    useState("");
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const res = await axios.get("https://english-window-server.vercel.app/movies");
-        setMovies(res.data.data);
-      } catch (error) {
-        console.error("Error fetching movie vocab:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const fetchMovies =
+      async () => {
+        try {
+          const res =
+            await axios.get(
+              "https://english-window-server.vercel.app/movies"
+            );
+
+          setMovies(
+            res.data.data
+          );
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
     fetchMovies();
   }, []);
 
-  if (loading) {
-    return <div className="text-center mt-10">Loading...</div>;
-  }
+  const filteredMovies =
+    useMemo(() => {
+      return movies.filter(
+        (movie) =>
+          movie.movieName
+            ?.toLowerCase()
+            .includes(
+              search.toLowerCase()
+            ) ||
+          movie.level
+            ?.toLowerCase()
+            .includes(
+              search.toLowerCase()
+            )
+      );
+    }, [movies, search]);
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold mb-5 text-center">
-        🎬 Movie Vocabulary List
-      </h1>
+    <div className="min-h-screen bg-base-200 p-5">
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {movies.map((movie) => (
-          <div
-            key={movie._id}
-            className="border border-blue-500 rounded-xl p-4 shadow-md hover:scale-110 duration-200 z-20"
-          >
-            <h2 className="text-xl font-semibold mb-2 text-blue-500">
-              {movie.movieName}
-            </h2>
-            <p>
-              <span className="font-bold">📊 Level:</span> {movie.level}
+      {/* HERO */}
+
+      <div className="hero rounded-3xl bg-base-100 shadow-xl mb-8">
+
+        <div className="hero-content text-center py-10">
+
+          <div>
+
+            <div className="flex justify-center mb-3">
+
+              <Film
+                size={45}
+              />
+
+            </div>
+
+            <h1 className="text-4xl font-bold">
+
+              Movie Vocabulary
+
+            </h1>
+
+            <p className="py-3 opacity-70">
+
+              Learn English
+              vocabulary through
+              movies and improve
+              your speaking.
+
             </p>
 
-            <a
-              href={movie.link}
-              target="_blank"
-              rel="noreferrer"
-              className="text-blue-500 underline mt-2 inline-block"
-            >
-              🔗 Learn
-            </a>
           </div>
-        ))}
+
+        </div>
+
       </div>
+
+      {/* STATS */}
+
+      <div className="stats shadow w-full mb-6">
+
+        <div className="stat">
+
+          <div className="stat-title">
+
+            Total Movies
+
+          </div>
+
+          <div className="stat-value">
+
+            {
+              filteredMovies.length
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* SEARCH */}
+
+      <div className="mb-8">
+
+        <label className="input input-bordered flex items-center gap-2">
+
+          <Search
+            size={18}
+          />
+
+          <input
+            type="text"
+            className="grow"
+            placeholder="Search movie..."
+            value={search}
+            onChange={(
+              e
+            ) =>
+              setSearch(
+                e.target.value
+              )
+            }
+          />
+
+        </label>
+
+      </div>
+
+      {/* LOADING */}
+
+      {loading ? (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          {[...Array(6)].map(
+            (_, i) => (
+              <div
+                key={i}
+                className="card bg-base-100 shadow-xl p-4"
+              >
+                <div className="skeleton h-7 w-40 mb-4"></div>
+
+                <div className="skeleton h-5 w-24 mb-3"></div>
+
+                <div className="skeleton h-10 w-full"></div>
+              </div>
+            )
+          )}
+
+        </div>
+      ) : (
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          {filteredMovies.map(
+            (movie) => (
+
+              <div
+                key={
+                  movie._id
+                }
+                className="
+                card
+                bg-base-100
+                shadow-xl
+                hover:-translate-y-2
+                hover:shadow-2xl
+                duration-300
+                "
+              >
+
+                <div className="card-body">
+
+                  <div className="flex justify-between">
+
+                    <h2 className="card-title">
+
+                      {
+                        movie.movieName
+                      }
+
+                    </h2>
+
+                    <div className="badge badge-primary">
+
+                      {
+                        movie.level
+                      }
+
+                    </div>
+
+                  </div>
+
+                  <p className="text-sm opacity-70">
+
+                    Improve your
+                    vocabulary
+                    through this
+                    movie content.
+
+                  </p>
+
+                  <div className="card-actions justify-end mt-4">
+
+                    <a
+                      href={
+                        movie.link
+                      }
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-primary"
+                    >
+
+                      Learn
+
+                      <ExternalLink
+                        size={
+                          16
+                        }
+                      />
+
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            )
+          )}
+
+        </div>
+
+      )}
+
     </div>
   );
 };
