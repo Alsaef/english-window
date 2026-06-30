@@ -8,6 +8,7 @@ const Navbar = () => {
     <li><Link to={'/'}>Home</Link></li>
     <li><Link to={'/update-vocabulary'}>Update Vocabulary</Link></li>
     <li><Link to={'/movies-vocab'}>Movie Vocab List</Link></li>
+    <li><Link to={'/grammar-vault'}>Grammar Value Note</Link></li>
     <li><Link to={'/test-exam'}>Test | Exam</Link></li>
     <li><Link to={'contact'}>Contact US</Link></li>
     </>

@@ -11,6 +11,7 @@ import ContactUs from './Components/ContactUs';
 import Private from './Private/Private';
 import UpdateVocabulary from './Components/UpdateVocabulary';
 import VocabularyPage from './Components/Listining';
+import NotesComponent from './Components/NotesComponent';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/contact" element={<ContactUs />} />
            <Route path="/update-vocabulary" element={<UpdateVocabulary />} />
             <Route path="/movies-vocab" element={<VocabularyPage />} />
+             <Route path="/grammar-vault" element={<NotesComponent />} />
         </Routes>
       </div>
       <Footer></Footer>
