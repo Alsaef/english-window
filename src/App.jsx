@@ -12,6 +12,7 @@ import Private from './Private/Private';
 import UpdateVocabulary from './Components/UpdateVocabulary';
 import VocabularyPage from './Components/Listining';
 import NotesComponent from './Components/NotesComponent';
+import FreeEbook from './Components/FreeEbook';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
            <Route path="/update-vocabulary" element={<UpdateVocabulary />} />
             <Route path="/movies-vocab" element={<VocabularyPage />} />
              <Route path="/grammar-vault" element={<NotesComponent />} />
+             <Route path="/free-ebooks" element={<FreeEbook />} />
         </Routes>
       </div>
       <Footer></Footer>
