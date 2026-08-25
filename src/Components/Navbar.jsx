@@ -27,10 +27,10 @@ const Navbar = () => {
        {nav}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">
+    <Link to={'/'} className="btn btn-ghost text-xl">
         <img src={logo} width={30} alt="" />
        <span className='lg:text-xl text-xl font-semibold'>English Window</span>
-    </a>
+    </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
