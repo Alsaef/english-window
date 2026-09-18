@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "phrasal": "Call it a day",
+    "meaning": "To stop working on something for the rest of the day or night.",
+    "example": "We've fixed all the critical bugs; let's call it a day and head home.",
+    "category": "Work & Study",
+    "situation": "Ending a workday or task",
+    "level": "Everyday",
+    "tag": "Common Phrasal"
+  },
+  {
+    "id": 2,
+    "phrasal": "Come up with",
+    "meaning": "To think of, produce, or suggest an idea or plan.",
+    "example": "She came up with a brilliant strategy to increase student engagement.",
+    "category": "Problem Solving",
+    "situation": "Brainstorming and ideas",
+    "level": "Intermediate",
+    "tag": "Daily Speaking"
+  },
+  {
+    "id": 3,
+    "phrasal": "Look forward to",
+    "meaning": "To feel excited and pleased about something that is going to happen in the future.",
+    "example": "I'm really looking forward to joining the English speaking workshop this weekend.",
+    "category": "Feelings & Anticipation",
+    "situation": "Future plans",
+    "level": "Essential",
+    "tag": "Frequent"
+  },
+  {
+    "id": 4,
+    "phrasal": "Put off",
+    "meaning": "To postpone, delay, or reschedule an event or task to a later time.",
+    "example": "Never put off until tomorrow what you can accomplish today.",
+    "category": "Time Management",
+    "situation": "Scheduling & tasks",
+    "level": "Intermediate",
+    "tag": "Common Phrasal"
+  },
+  {
+    "id": 5,
+    "phrasal": "Run into",
+    "meaning": "To unexpectedly meet or see someone you know by chance.",
+    "example": "Guess who I ran into at the supermarket yesterday? Our school teacher!",
+    "category": "Social & Encounters",
+    "situation": "Daily encounters",
+    "level": "Everyday",
+    "tag": "Conversational"
+  },
+  {
+    "id": 6,
+    "phrasal": "Figure out",
+    "meaning": "To finally understand or find a solution to a tricky problem.",
+    "example": "It took me hours, but I finally figured out how this algorithm works.",
+    "category": "Learning & Tech",
+    "situation": "Solving puzzles or code",
+    "level": "Everyday",
+    "tag": "High Frequency"
+  },
+  {
+    "id": 7,
+    "phrasal": "Catch up (with)",
+    "meaning": "To talk to someone you haven't seen for a while to find out what has happened in their life.",
+    "example": "Let's grab lunch this Friday and catch up on everything.",
+    "category": "Social & Friends",
+    "situation": "Reconnecting with peers",
+    "level": "Essential",
+    "tag": "Informal"
+  },
+  {
+    "id": 8,
+    "phrasal": "Back down",
+    "meaning": "To withdraw a claim, assertion, or cease opposition in an argument.",
+    "example": "Neither side was willing to back down during the heated debate.",
+    "category": "Discussion & Conflict",
+    "situation": "Debates & negotiations",
+    "level": "Advanced",
+    "tag": "Formal / Spoken"
+  }
+]
+

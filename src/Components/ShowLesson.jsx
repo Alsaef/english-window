@@ -1,67 +1,61 @@
 import React, { useContext, useEffect } from 'react';
 import { lessonContext } from '../Context/LessonProvider';
-import { AiOutlineWarning } from "react-icons/ai"
+import { AlertCircle } from 'lucide-react';
 import VocabularyCard from './VocabularyCard';
 import Loading from './Loading';
 import LessonNotFound from './LessonNotFound';
-const ShowLesson = ({showLessonApi}) => {
-    const { selectLesson, loading, fetchShowlesson, showLesson ,setshowLesson,setselectLesson} = useContext(lessonContext);
 
-    
-    
-      useEffect(()=>{
-           if(selectLesson) {
-            fetchShowlesson(`${showLessonApi}${selectLesson}`);
-        }
-   
-        },[selectLesson])
+const ShowLesson = ({ showLessonApi }) => {
+  const { selectLesson, loading, fetchShowlesson, showLesson } = useContext(lessonContext);
 
-    if (loading) {
-        return (
-           <Loading></Loading>
-        );
+  useEffect(() => {
+    if (selectLesson) {
+      fetchShowlesson(`${showLessonApi}${selectLesson}`);
     }
+  }, [selectLesson, showLessonApi]);
 
+  if (loading) {
+    return <Loading />;
+  }
 
-    if (!selectLesson) {
-        return (
-           <LessonNotFound></LessonNotFound>
-        );
-    }
+  if (!selectLesson) {
+    return <LessonNotFound />;
+  }
 
-
-    if (!showLesson || showLesson.length === 0) {
-        return (
-            <div className="flex flex-col items-center justify-center py-20 text-center bg-gray-300">
-                <div className="w-20 h-20 flex items-center justify-center bg-gray-200 rounded-full shadow">
-                    <AiOutlineWarning className="text-gray-500" size={45} />
-                </div>
-                <p className="mt-4 text-gray-600 text-lg">
-                    No vocabulary has been added to this lesson yet.
-                </p>
-                <h2 className="mt-1 text-2xl font-bold text-gray-800">
-                    Go to the next lesson
-                </h2>
-            </div>
-
-        );
-    }
-
-    return(
-        <div className='bg-gray-200 py-10 px-7'>
-
-           <div className='grid lg:grid-cols-3 grid-col-1 gap-3' >
-            {
-                showLesson.map(show=>(
-                    <VocabularyCard show={show}></VocabularyCard>
-                ))
-            }
-           </div>
-
-
+  if (!showLesson || showLesson.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 px-6 text-center bg-white rounded-3xl border border-slate-200 shadow-sm max-w-lg mx-auto">
+        <div className="w-16 h-16 flex items-center justify-center bg-amber-50 text-amber-600 rounded-2xl mb-4">
+          <AlertCircle size={32} />
         </div>
+        <h3 className="text-xl font-bold text-slate-800">
+          No words in Lesson {selectLesson} yet
+        </h3>
+        <p className="mt-1.5 text-sm text-slate-500">
+          Please select another lesson from the list above.
+        </p>
+      </div>
+    );
+  }
 
-    )
+  return (
+    <div className="pt-2 pb-12">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 flex items-center gap-2">
+          <span>Lesson {selectLesson} Words</span>
+          <span className="badge badge-primary badge-sm font-semibold">
+            {showLesson.length} words
+          </span>
+        </h3>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {showLesson.map((show, index) => (
+          <VocabularyCard key={show.id || show._id || index} show={show} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default ShowLesson;

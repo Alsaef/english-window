@@ -13,6 +13,7 @@ import UpdateVocabulary from './Components/UpdateVocabulary';
 import VocabularyPage from './Components/Listining';
 import NotesComponent from './Components/NotesComponent';
 import FreeEbook from './Components/FreeEbook';
+import SmartAndPhrasalEnglish from './Components/SmartAndPhrasalEnglish';
 
 const App = () => {
   return (
@@ -32,6 +33,9 @@ const App = () => {
             <Route path="/movies-vocab" element={<VocabularyPage />} />
              <Route path="/grammar-vault" element={<NotesComponent />} />
              <Route path="/free-ebooks" element={<FreeEbook />} />
+             <Route path="/smart-english" element={<SmartAndPhrasalEnglish />} />
+             <Route path="/daily-phrasal-english" element={<SmartAndPhrasalEnglish />} />
+             <Route path="/smart-phrasal-english" element={<SmartAndPhrasalEnglish />} />
         </Routes>
       </div>
       <Footer></Footer>

@@ -235,66 +235,106 @@ export default function Test() {
     speechSynthesis.speak(utterance);
   };
   return (
-    <div className="px-6 py-10">
-      <h1 className="text-center text-3xl font-bold text-blue-600 mb-6">
-        MCQ Test / Exam
-      </h1>
-
-      <div className="flex justify-center gap-4 mb-10">
-        <button
-          onClick={() => { setLevel(1); restart(); }}
-          className={level === 1 ? "btn bg-[#422AD5] text-white" : "btn border-[#422AD5] bg-white border-2 text-[#422AD5] hover:bg-[#422AD5] hover:text-white"}
-        >
-          Lesson 1 Test
-        </button>
-
-        <button
-          onClick={() => { setLevel(2); restart(); }}
-          className={level === 2 ? "btn bg-[#422AD5] text-white" : "btn border-[#422AD5] bg-white border-2 text-[#422AD5] hover:bg-[#422AD5] hover:text-white"}
-        >
-          Lesson 2 Test
-        </button>
-        <button
-          onClick={() => { setLevel(3); restart(); }}
-          className={level === 3 ? "btn bg-[#422AD5] text-white" : "btn border-[#422AD5] bg-white border-2 text-[#422AD5] hover:bg-[#422AD5] hover:text-white"}
-        >
-          Lesson 3 Test
-        </button>
-      </div>
-
-      {finished ? (
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Test Completed!</h2>
-          <p className="text-xl mb-6">Score: {score} / {words.length}</p>
-          <button onClick={restart} className="px-6 py-2 bg-[#422AD5] text-white rounded-lg">
-            Restart Test
-          </button>
-        </div>
-      ) : (
-        <div className="max-w-xl mx-auto bg-white rounded-2xl shadow p-8">
-          <h2 className="text-xl font-semibold mb-6">
-            What is the meaning of: <span className="text-blue-600">{question.word}?</span> <button onClick={() => handelSpeech(question.word)}  className="badge badge-outline text-xl py-2 cursor-pointer">
-            <FiVolume2 size={15} />
-            </button>
-          </h2>
-
-          <div className="space-y-4">
-            {options.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => handleAnswer(option)}
-                className="w-full text-left px-5 py-3 bg-gray-100 rounded-lg hover:bg-gray-200"
-              >
-                {option}
-              </button>
-            ))}
-          </div>
-
-          <p className="text-right mt-6 text-gray-500">
-            Question {current + 1} / {words.length}
+    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        
+        {/* HERO BANNER */}
+        <div className="rounded-3xl bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-700 text-white shadow-xl mb-10 p-6 sm:p-10 text-center relative overflow-hidden">
+          <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-2">
+            Vocabulary Quiz & Exam
+          </h1>
+          <p className="text-sm sm:text-base text-indigo-100 max-w-lg mx-auto">
+            Test your vocabulary retention, meaning comprehension, and track your scores.
           </p>
         </div>
-      )}
+
+        {/* LEVEL BUTTONS */}
+        <div className="flex flex-wrap justify-center gap-2.5 mb-10">
+          {[1, 2, 3].map((lvl) => (
+            <button
+              key={lvl}
+              onClick={() => { setLevel(lvl); restart(); }}
+              className={`btn btn-sm sm:btn-md rounded-2xl font-bold px-5 py-2 transition-all duration-200 ${
+                level === lvl
+                  ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/25 scale-105 border-none"
+                  : "bg-white hover:bg-indigo-50/70 border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 shadow-xs"
+              }`}
+            >
+              Lesson {lvl} Test
+            </button>
+          ))}
+        </div>
+
+        {finished ? (
+          <div className="text-center bg-white rounded-3xl p-10 border border-slate-200/90 shadow-xl max-w-lg mx-auto animate-in zoom-in-95">
+            <div className="text-6xl mb-4">🏆</div>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2">Test Completed!</h2>
+            <p className="text-slate-500 text-sm mb-4">You did a great job testing your knowledge.</p>
+            
+            <div className="my-6 p-6 bg-indigo-50/70 rounded-2xl border border-indigo-100/80">
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 block mb-1">Your Final Score</span>
+              <span className="text-4xl font-black text-indigo-600">
+                {score} <span className="text-xl text-slate-400 font-medium">/ {words.length}</span>
+              </span>
+            </div>
+
+            <button 
+              onClick={restart} 
+              className="btn rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold px-8 shadow-md shadow-indigo-500/20 border-none transition-all hover:scale-105"
+            >
+              Restart Test
+            </button>
+          </div>
+        ) : (
+          <div className="max-w-xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-200/90 p-6 sm:p-10">
+            {/* PROGRESS BAR */}
+            <div className="flex items-center justify-between text-xs font-bold text-slate-400 mb-4">
+              <span>QUESTION {current + 1} OF {words.length}</span>
+              <span className="text-indigo-600">Score: {score}</span>
+            </div>
+            <div className="w-full bg-slate-100 rounded-full h-2 mb-8">
+              <div 
+                className="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                style={{ width: `${((current + 1) / words.length) * 100}%` }}
+              />
+            </div>
+
+            {/* QUESTION */}
+            <div className="text-center mb-8">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2">
+                What is the meaning of:
+              </span>
+              <div className="inline-flex items-center gap-3">
+                <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+                  {question.word}
+                </h2>
+                <button 
+                  onClick={() => handelSpeech(question.word)} 
+                  className="btn btn-sm btn-circle bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white border-none transition-colors"
+                  title="Pronounce"
+                  aria-label="Listen"
+                >
+                  <FiVolume2 size={16} />
+                </button>
+              </div>
+            </div>
+
+            {/* OPTIONS */}
+            <div className="space-y-3">
+              {options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswer(option)}
+                  className="w-full text-left px-5 py-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 text-slate-800 font-semibold text-sm transition-all flex items-center justify-between group"
+                >
+                  <span>{option}</span>
+                  <span className="text-xs text-slate-300 group-hover:text-indigo-500 font-bold">Select</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,37 +1,42 @@
 import React, { useContext, useEffect } from 'react';
 import { lessonContext } from '../Context/LessonProvider';
-import { FaBook } from "react-icons/fa";
-import useGetAllVocabulary from '../Hook/useGetAllVocabulary';
-import CountUp from 'react-countup';
+import { BookOpen } from 'lucide-react';
 
-const LessonToggle = ({toggleApi}) => {
-    const { toggleBtn, setselectLesson, selectLesson, fetchToggleFn } = useContext(lessonContext)
+const LessonToggle = ({ toggleApi }) => {
+  const { toggleBtn, setselectLesson, selectLesson, fetchToggleFn } = useContext(lessonContext);
 
-    const handelFetchLession = (level) => {
-        console.log(level);
-        setselectLesson(level)
+  const handleFetchLesson = (level) => {
+    setselectLesson(level);
+  };
 
-    }
+  useEffect(() => {
+    fetchToggleFn(`${toggleApi}`);
+  }, [toggleApi]);
 
-    useEffect(() => {
-        fetchToggleFn(`${toggleApi}`)
-    }, [])
-    return (
-        <div className='mt-24'>
-           
-            <div className='flex flex-wrap gap-2 justify-center my-14'>
-                {
-                    toggleBtn.map(btn => (
-                        <button onClick={() => handelFetchLession(btn.level_no)} key={btn.id} className={`
-                            ${selectLesson === btn.level_no ? 'btn bg-[#422AD5] text-white' : 'btn border-[#422AD5] bg-white border-2 text-[#422AD5] hover:bg-[#422AD5] hover:text-white'}
-                            
-                            
-                            `}><FaBook /> Lesson-{btn.level_no}</button>
-                    ))
-                }
-            </div>
-        </div>
-    );
+  return (
+    <div className="mb-10">
+      <div className="flex flex-wrap gap-2.5 justify-center max-w-4xl mx-auto">
+        {toggleBtn.map((btn) => {
+          const isSelected = selectLesson === btn.level_no;
+
+          return (
+            <button
+              onClick={() => handleFetchLesson(btn.level_no)}
+              key={btn.id}
+              className={`btn btn-sm sm:btn-md rounded-2xl font-bold px-4 py-2 transition-all duration-200 flex items-center gap-2 ${
+                isSelected
+                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/25 scale-105 border-none'
+                  : 'bg-white hover:bg-indigo-50/70 border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 shadow-xs'
+              }`}
+            >
+              <BookOpen size={16} className={isSelected ? 'text-white' : 'text-indigo-500'} />
+              <span>Lesson {btn.level_no}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default LessonToggle;

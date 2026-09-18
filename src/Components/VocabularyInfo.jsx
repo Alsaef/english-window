@@ -1,52 +1,99 @@
-import { FiVolume2 } from "react-icons/fi";
+import React from "react";
+import { Volume2, X, Sparkles, BookOpen, Quote } from "lucide-react";
 
-
-const VocabularyInfo = ({ open, setOpen, info,handelSpeech }) => {
+const VocabularyInfo = ({ open, setOpen, info, handelSpeech }) => {
   if (!open || !info) return null;
 
   return (
-    <dialog open className="modal">
-      <div className="modal-box max-w-lg">
+    <dialog open className="modal modal-open backdrop-blur-sm bg-slate-900/40 z-50">
+      <div className="modal-box max-w-lg rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-2xl bg-white relative animate-in fade-in zoom-in-95 duration-200">
+        
+        {/* CLOSE BUTTON */}
         <button
           onClick={() => setOpen(false)}
-          className="btn btn-sm btn-circle btn-ghost absolute right-3 top-3"
+          className="btn btn-sm btn-circle btn-ghost text-slate-400 hover:text-slate-700 hover:bg-slate-100 absolute right-4 top-4"
+          aria-label="Close modal"
         >
-          ✕
+          <X size={18} />
         </button>
 
-        <h2 className="text-2xl font-bold text-primary mb-1">
-          {info.word}
-        </h2>
-
-        <p className="text-xl text-gray-500 mb-4">
-          {info.pronunciation} • {info.partsOfSpeech}
-        </p>
-
-        <div className="mb-3 text-xl">
-          <p className="font-semibold">Meaning</p>
-          <p>{info.meaning}</p>
+        {/* HEADER */}
+        <div className="flex items-center gap-2 mb-2">
+          <span className="badge badge-primary badge-sm font-semibold">
+            {info.partsOfSpeech || "Word"}
+          </span>
+          {info.pronunciation && (
+            <span className="text-xs text-slate-400 italic">
+              /{info.pronunciation}/
+            </span>
+          )}
         </div>
 
-        <div className="mb-3">
-          <p className="font-semibold">Example</p>
-          <p className="text-2xl">“{info.sentence}”</p>
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+            {info.word}
+          </h2>
+
+          <button
+            onClick={() => handelSpeech(info.word)}
+            className="btn btn-circle btn-sm bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white border-none shadow-xs transition-all"
+            title="Pronounce word"
+          >
+            <Volume2 size={18} />
+          </button>
         </div>
 
-        <div className="mb-4">
-          <p className="font-semibold py-3 text-primary text-xl">Synonyms</p>
-          <div className="flex gap-2 flex-wrap">
-            {info.synonyms?.map((syn, i) => (
-              <button onClick={()=>handelSpeech(syn)} key={i} className="badge badge-outline text-xl py-2 cursor-pointer">
-                {syn}   <FiVolume2 size={20} />
-              </button>
-            ))}
+        {/* MEANING BLOCK */}
+        <div className="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100/80 mb-5">
+          <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider block mb-1">
+            Meaning
+          </span>
+          <p className="text-xl font-bold text-slate-800">
+            {info.meaning}
+          </p>
+        </div>
+
+        {/* EXAMPLE SENTENCE */}
+        {info.sentence && (
+          <div className="mb-5 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1 mb-1.5">
+              <Quote size={12} className="text-indigo-500" />
+              Example Sentence
+            </span>
+            <p className="text-sm sm:text-base text-slate-700 italic leading-relaxed">
+              "{info.sentence}"
+            </p>
           </div>
+        )}
+
+        {/* SYNONYMS */}
+        {info.synonyms && info.synonyms.length > 0 && (
+          <div className="mb-6">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
+              Synonyms
+            </span>
+            <div className="flex gap-2 flex-wrap">
+              {info.synonyms.map((syn, i) => (
+                <button
+                  onClick={() => handelSpeech(syn)}
+                  key={i}
+                  className="px-3 py-1 rounded-xl bg-slate-100 hover:bg-indigo-100 hover:text-indigo-700 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  title="Click to listen"
+                >
+                  <span>{syn}</span>
+                  <Volume2 size={12} className="opacity-60" />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* FOOTER STATS */}
+        <div className="flex justify-between items-center text-xs text-slate-400 border-t border-slate-100 pt-4">
+          <span className="font-medium">Difficulty Level: {info.level || "Standard"}</span>
+          {info.points && <span className="font-semibold text-indigo-600">+{info.points} Pts</span>}
         </div>
 
-        <div className="flex justify-between text-sm text-gray-500 border-t pt-3">
-          <span>Level: {info.level}</span>
-          <span>Points: {info.points}</span>
-        </div>
       </div>
     </dialog>
   );

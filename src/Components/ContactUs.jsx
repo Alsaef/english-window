@@ -1,132 +1,164 @@
 import React, { useState } from 'react';
+import { Mail, MapPin, Send, MessageSquare, Sparkles } from 'lucide-react';
 
 const ContactUs = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-       
-        console.log("Form Submitted:", formData);
-        alert("Thank you! Your message has been sent.");
-        setFormData({ name: '', email: '', subject: '', message: '' }); // Form reset
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Submitted:", formData);
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }, 4000);
+  };
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-                
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl font-extrabold text-blue-700 sm:text-4xl">
-                        Contact Us
-                    </h2>
-                    <p className="mt-4 text-lg text-gray-500">
-                        Have questions about English Window? We're here to help!
-                    </p>
-                </div>
+  return (
+    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        
+        {/* HERO BANNER */}
+        <div className="rounded-3xl bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-700 text-white shadow-xl mb-12 p-8 sm:p-14 text-center relative overflow-hidden">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 text-white border border-white/20">
+            <MessageSquare size={16} className="text-cyan-300" />
+            <span>We are here to help</span>
+          </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                   
-                    <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
-                        <h3 className="text-xl font-bold text-gray-800 mb-6">Contact Information</h3>
-                        
-                        <div className="space-y-4">
-                            <div className="flex items-start space-x-4">
-                                <div className="bg-blue-100 p-2 rounded-lg text-blue-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-medium text-gray-500">Email us at</p>
-                                    <p className="text-base font-semibold text-gray-800">support@englishwindow.com</p>
-                                </div>
-                            </div>
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight">
+            Contact English Window
+          </h1>
 
-                            <div className="flex items-start space-x-4">
-                                <div className="bg-purple-100 p-2 rounded-lg text-purple-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-medium text-gray-500">Visit our office</p>
-                                    <p className="text-base font-semibold text-gray-800">Dhaka, Bangladesh</p>
-                                </div>
-                            </div>
-                        </div>
-
-                       
-                        <div className="mt-10">
-                            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Follow Us</p>
-                            <div className="flex space-x-4 text-blue-600">
-                                <span className="cursor-pointer hover:text-blue-800">Facebook</span>
-                                <span className="cursor-pointer hover:text-blue-800">Twitter</span>
-                                <span className="cursor-pointer hover:text-blue-800">LinkedIn</span>
-                            </div>
-                        </div>
-                    </div>
-
-                   
-                    <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700">Name</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    required
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-                                    placeholder="Your Name"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700">Email</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    required
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-                                    placeholder="your@email.com"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700">Message</label>
-                                <textarea
-                                    name="message"
-                                    rows="4"
-                                    required
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 outline-none transition"
-                                    placeholder="How can we help you?"
-                                ></textarea>
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg"
-                            >
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+          <p className="mt-4 text-base sm:text-lg text-indigo-100 max-w-xl mx-auto leading-relaxed">
+            Have questions, feedback, or suggestions? Send us a message and our team will get back to you promptly.
+          </p>
         </div>
-    );
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          {/* CONTACT INFO CARD */}
+          <div className="bg-white p-8 sm:p-10 rounded-3xl shadow-xs border border-slate-200/90 flex flex-col justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                Get In Touch
+              </h2>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+                    <Mail size={22} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Email Address</p>
+                    <a href="mailto:support@englishwindow.com" className="text-base font-semibold text-slate-800 hover:text-indigo-600 transition-colors">
+                      support@englishwindow.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center flex-shrink-0">
+                    <MapPin size={22} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Location</p>
+                    <p className="text-base font-semibold text-slate-800">
+                      Dhaka, Bangladesh
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 pt-6 border-t border-slate-100">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+                Learning Community
+              </p>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Connect with thousands of active students practicing vocabulary and conversational speaking every day.
+              </p>
+            </div>
+          </div>
+
+          {/* CONTACT FORM */}
+          <div className="bg-white p-8 sm:p-10 rounded-3xl shadow-xs border border-slate-200/90">
+            {submitted && (
+              <div className="alert alert-success mb-6 rounded-2xl text-white font-medium shadow-sm">
+                <span>Thank you! Your message has been sent successfully.</span>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm transition"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm transition"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  rows="4"
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm transition"
+                  placeholder="How can we assist your English learning?"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-md shadow-indigo-500/20 flex items-center justify-center gap-2 hover:scale-102"
+              >
+                <Send size={16} />
+                <span>Send Message</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
 };
 
 export default ContactUs;
