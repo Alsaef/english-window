@@ -1,5 +1,5 @@
 import React from "react";
-import { Volume2, X, Sparkles, BookOpen, Quote } from "lucide-react";
+import { Volume2, X, Quote } from "lucide-react";
 
 const VocabularyInfo = ({ open, setOpen, info, handelSpeech }) => {
   if (!open || !info) return null;
@@ -17,39 +17,49 @@ const VocabularyInfo = ({ open, setOpen, info, handelSpeech }) => {
           <X size={18} />
         </button>
 
-        {/* HEADER */}
-        <div className="flex items-center gap-2 mb-2">
+        {/* HEADER BADGES */}
+        <div className="flex items-center gap-2 mb-3">
           <span className="badge badge-primary badge-sm font-semibold">
-            {info.partsOfSpeech || "Word"}
+            {info.partsOfSpeech || "Vocabulary"}
           </span>
-          {info.pronunciation && (
-            <span className="text-xs text-slate-400 italic">
-              /{info.pronunciation}/
+          {info.level && (
+            <span className="badge badge-ghost badge-sm text-slate-500 font-medium">
+              Level {info.level}
             </span>
           )}
         </div>
 
-        <div className="flex items-center justify-between gap-4 mb-4">
+        {/* WORD TITLE & LISTEN TRIGGER */}
+        <div className="flex items-center justify-between gap-4 mb-2">
           <h2 className="text-3xl font-black text-slate-900 tracking-tight">
             {info.word}
           </h2>
 
           <button
             onClick={() => handelSpeech(info.word)}
-            className="btn btn-circle btn-sm bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white border-none shadow-xs transition-all"
-            title="Pronounce word"
+            className="btn btn-circle btn-md bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white border border-indigo-100 shadow-xs transition-all hover:scale-105"
+            title="Listen pronunciation"
           >
-            <Volume2 size={18} />
+            <Volume2 size={20} />
           </button>
         </div>
+
+        {/* PRONUNCIATION SECTION - Soothing, clear, pleasant typography */}
+        {info.pronunciation && (
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-amber-50 border border-amber-200/80 text-amber-900 mb-5 shadow-xs">
+            <Volume2 size={15} className="text-amber-600 flex-shrink-0" />
+            <span className="text-xs font-semibold text-amber-700">উচ্চারণ:</span>
+            <span className="text-base font-bold tracking-wide text-slate-900">{info.pronunciation}</span>
+          </div>
+        )}
 
         {/* MEANING BLOCK */}
         <div className="p-4 bg-indigo-50/60 rounded-2xl border border-indigo-100/80 mb-5">
           <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider block mb-1">
-            Meaning
+            বাংলা অর্থ (Meaning)
           </span>
           <p className="text-xl font-bold text-slate-800">
-            {info.meaning}
+            {info.meaning || "অর্থ উপলব্ধ নেই"}
           </p>
         </div>
 
@@ -77,7 +87,7 @@ const VocabularyInfo = ({ open, setOpen, info, handelSpeech }) => {
                 <button
                   onClick={() => handelSpeech(syn)}
                   key={i}
-                  className="px-3 py-1 rounded-xl bg-slate-100 hover:bg-indigo-100 hover:text-indigo-700 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  className="px-3 py-1 rounded-xl bg-slate-100 hover:bg-indigo-100 hover:text-indigo-700 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
                   title="Click to listen"
                 >
                   <span>{syn}</span>

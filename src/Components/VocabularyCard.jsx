@@ -51,35 +51,53 @@ const VocabularyCard = ({ show }) => {
 
         <div>
           {/* CARD TOP HEADER */}
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100/60">
               Vocabulary
             </span>
-            {show.pronunciation && (
-              <span className="text-xs text-slate-400 italic">
-                /{show.pronunciation}/
-              </span>
-            )}
+
+            {/* Quick pronunciation sound trigger */}
+            <button
+              onClick={() => handleSpeech(show.word)}
+              className="btn btn-xs btn-circle bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white border-none shadow-xs transition-all hover:scale-110"
+              title="Listen Pronunciation"
+              aria-label="Listen audio"
+            >
+              <Volume2 size={13} />
+            </button>
           </div>
 
           {/* MAIN WORD */}
-          <h3 className="text-2xl sm:text-3xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight text-center py-2">
+          <h3 className="text-2xl sm:text-3xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight text-center pt-1 pb-2">
             {show.word}
           </h3>
 
+          {/* PRONUNCIATION SECTION - Clean, eye-friendly, comfortable */}
+          {show.pronunciation ? (
+            <div className="flex items-center justify-center my-2">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-50/90 border border-amber-200/70 text-amber-900 text-sm font-semibold shadow-xs">
+                <Volume2 size={13} className="text-amber-600 flex-shrink-0" />
+                <span className="text-xs text-amber-700/80 font-medium">উচ্চারণ:</span>
+                <span className="tracking-wide text-slate-900 font-bold">{show.pronunciation}</span>
+              </div>
+            </div>
+          ) : (
+            <div className="h-6 mb-2" />
+          )}
+
           {/* MEANING */}
-          <div className="my-4 p-3 bg-slate-50 rounded-2xl text-center border border-slate-100">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-1">
-              Bengali Meaning
+          <div className="my-3 p-3.5 bg-slate-50/80 rounded-2xl text-center border border-slate-100">
+            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+              বাংলা অর্থ
             </span>
             <p className="text-lg font-bold text-slate-800">
-              {show.meaning}
+              {show.meaning || (show.pronunciation ? `উচ্চারণ: ${show.pronunciation}` : "অর্থ জানতে Details দেখুন")}
             </p>
           </div>
         </div>
 
         {/* ACTIONS */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-2">
+        <div className="flex items-center justify-between pt-3.5 border-t border-slate-100 mt-2">
           {/* DETAILS BUTTON */}
           <button
             onClick={() =>
@@ -87,21 +105,21 @@ const VocabularyCard = ({ show }) => {
                 ? handleInfo(show.id)
                 : handleInfoOwn(show._id)
             }
-            className="btn btn-sm btn-ghost rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 gap-1.5 transition-all"
+            className="btn btn-sm btn-ghost rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 gap-1.5 transition-all text-xs font-bold"
             title="View Details"
           >
-            <Info size={16} />
-            <span className="text-xs font-bold">Details</span>
+            <Info size={15} />
+            <span>Details</span>
           </button>
 
-          {/* PRONUNCIATION BUTTON */}
+          {/* PRONUNCIATION LISTEN BUTTON */}
           <button
             onClick={() => handleSpeech(show.word)}
-            className="btn btn-sm btn-circle bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white border-none shadow-xs transition-all hover:scale-110"
+            className="btn btn-sm rounded-xl bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-100/80 font-semibold text-xs flex items-center gap-1.5 transition-all shadow-xs"
             title="Listen Pronunciation"
-            aria-label="Pronounce"
           >
-            <Volume2 size={16} />
+            <Volume2 size={14} />
+            <span>শুনুন</span>
           </button>
         </div>
       </div>
