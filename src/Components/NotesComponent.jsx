@@ -1,4 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import {
   Search,
   ExternalLink,
@@ -67,6 +68,10 @@ export default function NotesComponent() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Grammar Vault | English Window Master Notes</title>
+        <meta name="description" content="Access master English grammar notes on Tenses, Voice, Modals, Prepositions, and WH questions." />
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         
         {/* HERO BANNER */}

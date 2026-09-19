@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import LessonToggle from './LessonToggle';
 import ShowLesson from './ShowLesson';
 import useResetLesson from '../Hook/useResetLesson';
@@ -11,6 +12,10 @@ const UpdateVocabulary = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Update Vocabulary | English Window</title>
+        <meta name="description" content="Manage and practice server-backed vocabulary lessons on English Window." />
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         
         {/* HERO BANNER */}

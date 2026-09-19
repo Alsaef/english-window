@@ -5,6 +5,7 @@ import ShowLesson from './ShowLesson';
 import useGetAllVocabulary from '../Hook/useGetAllVocabulary';
 import CountUp from 'react-countup';
 import useResetLesson from '../Hook/useResetLesson';
+import { Helmet } from 'react-helmet-async';
 import { 
   Sparkles, 
   BookOpen, 
@@ -59,6 +60,10 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <Helmet>
+        <title>English Window | Learn English Vocabulary & Spoken Fluency</title>
+        <meta name="description" content="Master English vocabulary, audio pronunciation, Bengali meanings, smart phrases, and grammar notes with English Window." />
+      </Helmet>
       
       {/* HERO SECTION */}
       <section className="relative overflow-hidden pt-12 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-indigo-50/70 via-white to-slate-50">

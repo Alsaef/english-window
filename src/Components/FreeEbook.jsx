@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { BookOpen, Search, ExternalLink, Sparkles } from "lucide-react";
 
 const FreeEbook = () => {
@@ -32,6 +33,10 @@ const FreeEbook = () => {
 
   return (
     <section className="min-h-screen bg-slate-50 px-4 py-10 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Free English Ebooks & PDFs | English Window</title>
+        <meta name="description" content="Download standard English grammar reference books and vocabulary guides for free." />
+      </Helmet>
       <div className="mx-auto max-w-7xl">
         
         {/* HERO BANNER */}

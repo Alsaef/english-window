@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import { Search, Film, ExternalLink, Sparkles, PlayCircle } from "lucide-react";
 
@@ -34,6 +35,10 @@ const MovieVocab = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Movie Vocabulary | English Window</title>
+        <meta name="description" content="Learn authentic conversational English and vocabulary from popular movies and dialogues." />
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         
         {/* HERO BANNER */}

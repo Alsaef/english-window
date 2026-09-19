@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase.init';
@@ -31,6 +32,10 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-[85vh] bg-slate-50 px-4 py-12">
+      <Helmet>
+        <title>Login | English Window</title>
+        <meta name="description" content="Sign in to your English Window account to continue learning English vocabulary." />
+      </Helmet>
       <div className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-200/90 w-full max-w-md">
         
         {/* HEADER */}

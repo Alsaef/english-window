@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import about from '../assets/aboutus.jpg';
 import { Sparkles, Target, Award, CheckCircle2, Heart } from 'lucide-react';
 
@@ -24,6 +25,10 @@ export default function AboutUs() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>About Us | English Window Mission & Values</title>
+        <meta name="description" content="Discover the mission of English Window: making English vocabulary and speaking easy, modern, and accessible for everyone." />
+      </Helmet>
       <div className="max-w-5xl mx-auto">
         
         {/* HERO BANNER */}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Mail, MapPin, Send, MessageSquare, Sparkles } from 'lucide-react';
 
 const ContactUs = () => {
@@ -26,6 +27,10 @@ const ContactUs = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Contact Us | English Window Support</title>
+        <meta name="description" content="Get in touch with English Window team for questions, suggestions, and learning support." />
+      </Helmet>
       <div className="max-w-5xl mx-auto">
         
         {/* HERO BANNER */}

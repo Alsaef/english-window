@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { 
   Search, 
   ExternalLink, 
@@ -79,6 +80,10 @@ export default function SmartAndPhrasalEnglish() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Smart English & Daily Phrasals | English Window</title>
+        <meta name="description" content="Explore smart spoken English phrases, daily phrasal expressions, and real-life conversation tables." />
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         
         {/* HERO HEADER */}

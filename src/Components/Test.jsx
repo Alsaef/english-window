@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FiVolume2 } from "react-icons/fi";
 
 // Lesson 1 Words
@@ -236,6 +237,10 @@ export default function Test() {
   };
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>MCQ Test & Exam | English Window</title>
+        <meta name="description" content="Test your English vocabulary knowledge with interactive MCQ exams and quizzes." />
+      </Helmet>
       <div className="max-w-3xl mx-auto">
         
         {/* HERO BANNER */}
