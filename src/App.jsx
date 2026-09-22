@@ -14,6 +14,7 @@ import VocabularyPage from './Components/Listining';
 import NotesComponent from './Components/NotesComponent';
 import FreeEbook from './Components/FreeEbook';
 import SmartAndPhrasalEnglish from './Components/SmartAndPhrasalEnglish';
+import SentenceChecker from './Components/SentenceChecker';
 
 const App = () => {
   return (
@@ -29,13 +30,15 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<ContactUs />} />
-           <Route path="/update-vocabulary" element={<UpdateVocabulary />} />
-            <Route path="/movies-vocab" element={<VocabularyPage />} />
-             <Route path="/grammar-vault" element={<NotesComponent />} />
-             <Route path="/free-ebooks" element={<FreeEbook />} />
-             <Route path="/smart-english" element={<SmartAndPhrasalEnglish />} />
-             <Route path="/daily-phrasal-english" element={<SmartAndPhrasalEnglish />} />
-             <Route path="/smart-phrasal-english" element={<SmartAndPhrasalEnglish />} />
+          <Route path="/update-vocabulary" element={<UpdateVocabulary />} />
+          <Route path="/movies-vocab" element={<VocabularyPage />} />
+          <Route path="/grammar-vault" element={<NotesComponent />} />
+          <Route path="/free-ebooks" element={<FreeEbook />} />
+          <Route path="/smart-english" element={<SmartAndPhrasalEnglish />} />
+          <Route path="/daily-phrasal-english" element={<SmartAndPhrasalEnglish />} />
+          <Route path="/smart-phrasal-english" element={<SmartAndPhrasalEnglish />} />
+          <Route path="/sentence-checker" element={<SentenceChecker />} />
+          <Route path="/grammar-checker" element={<SentenceChecker />} />
         </Routes>
       </div>
       <Footer></Footer>
