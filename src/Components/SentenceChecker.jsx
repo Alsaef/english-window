@@ -17,7 +17,8 @@ import {
   ShieldCheck,
   Languages,
   Clock,
-  Lock
+  Lock,
+  Repeat
 } from "lucide-react";
 
 export default function SentenceChecker() {
@@ -26,11 +27,12 @@ export default function SentenceChecker() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
+  const [copiedParaphraseIdx, setCopiedParaphraseIdx] = useState(null);
   const [quota, setQuota] = useState({ remaining: null, limit: 15, retryAfterMinutes: 0, ip: "" });
 
   const API_BASE_URL =
     import.meta.env.VITE_API_URL ||
-    (window.location.hostname === "production"
+    (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
       ? "http://localhost:5000"
       : "https://english-window-server.vercel.app");
 
@@ -107,6 +109,13 @@ export default function SentenceChecker() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Copy specific paraphrase
+  const handleCopyParaphrase = (text, idx) => {
+    navigator.clipboard.writeText(text);
+    setCopiedParaphraseIdx(idx);
+    setTimeout(() => setCopiedParaphraseIdx(null), 2000);
+  };
+
   // Helper to detect keyboard smashes, gibberish, or non-English letter sequences
   const isLikelyGibberish = (text) => {
     const trimmed = text.trim();
@@ -161,6 +170,7 @@ export default function SentenceChecker() {
         formalAlternative: "",
         casualAlternative: "",
         grammarRuleTips: "A valid English sentence requires meaningful words, a subject, and a finite verb to convey a complete thought.",
+        paraphrases: [],
         keyVocabulary: []
       };
     }
@@ -175,6 +185,7 @@ export default function SentenceChecker() {
         overallScore: 40,
         bengaliMeaning: `শব্দটির অর্থ: ${trimmed}`,
         englishMeaning: `This is a single standalone word ('${trimmed}'), not a complete sentence.`,
+        paraphrases: [],
         errors: [
           {
             type: "Incomplete Sentence",
@@ -315,6 +326,33 @@ export default function SentenceChecker() {
       tip = "Great job! Keep practicing with varied vocabulary and complex sentence structures.";
     }
 
+    const fallbackParaphrases = [
+      {
+        style: "Fluent & Natural",
+        text: corrected,
+        bengaliMeaning: bengaliMeaning,
+        explanation: "Natural and modern phrasing suitable for fluent everyday communication."
+      },
+      {
+        style: "Formal / Academic",
+        text: formalAlt,
+        bengaliMeaning: bengaliMeaning,
+        explanation: "Advanced vocabulary and professional tone suitable for academic or formal context."
+      },
+      {
+        style: "Short & Concise",
+        text: corrected.replace(/very\s+/gi, ""),
+        bengaliMeaning: bengaliMeaning,
+        explanation: "Direct and compact phrasing with minimal filler words."
+      },
+      {
+        style: "Casual / Spoken",
+        text: casualAlt,
+        bengaliMeaning: bengaliMeaning,
+        explanation: "Relaxed, idiomatic phrasing for friendly conversation."
+      }
+    ];
+
     return {
       isCorrect,
       originalSentence: text,
@@ -323,6 +361,7 @@ export default function SentenceChecker() {
       overallScore: score,
       bengaliMeaning,
       englishMeaning,
+      paraphrases: fallbackParaphrases,
       errors,
       improvedAlternative: corrected,
       formalAlternative: formalAlt,
@@ -829,6 +868,119 @@ export default function SentenceChecker() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+            )}
+
+            {/* AI SENTENCE PARAPHRASER (বাক্য রূপান্তর / প্যারাফ্রেজিং) */}
+            {result.paraphrases && result.paraphrases.length > 0 && (
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md space-y-5">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5 text-slate-800 font-bold text-lg">
+                    <div className="p-2 rounded-xl bg-teal-50 text-teal-600 border border-teal-100">
+                      <Repeat size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900 leading-snug">
+                        AI Sentence Paraphraser (বাক্য রূপান্তর / প্যারাফ্রেজিং)
+                      </h3>
+                      <p className="text-xs text-slate-500 font-normal">
+                        স্বাভাবিক ও আকর্ষণীয় বিভিন্ন ভঙ্গিমায় বাক্যের বিকল্প রূপ এবং বাংলা অর্থ
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-200/70">
+                    {result.paraphrases.length} Paraphrase Styles
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {result.paraphrases.map((p, idx) => {
+                    const s = (p.style || "").toLowerCase();
+                    const theme =
+                      s.includes("fluent") || s.includes("natural")
+                        ? {
+                            badge: "bg-emerald-100/80 text-emerald-800 border-emerald-200",
+                            border: "border-emerald-200/70 hover:border-emerald-300",
+                            highlight: "text-emerald-950",
+                            bengaliBg: "bg-emerald-50/70 border-emerald-100 text-emerald-900"
+                          }
+                        : s.includes("formal") || s.includes("academic")
+                        ? {
+                            badge: "bg-indigo-100/80 text-indigo-800 border-indigo-200",
+                            border: "border-indigo-200/70 hover:border-indigo-300",
+                            highlight: "text-indigo-950",
+                            bengaliBg: "bg-indigo-50/70 border-indigo-100 text-indigo-900"
+                          }
+                        : s.includes("short") || s.includes("concise")
+                        ? {
+                            badge: "bg-amber-100/80 text-amber-800 border-amber-200",
+                            border: "border-amber-200/70 hover:border-amber-300",
+                            highlight: "text-amber-950",
+                            bengaliBg: "bg-amber-50/70 border-amber-100 text-amber-900"
+                          }
+                        : {
+                            badge: "bg-purple-100/80 text-purple-800 border-purple-200",
+                            border: "border-purple-200/70 hover:border-purple-300",
+                            highlight: "text-purple-950",
+                            bengaliBg: "bg-purple-50/70 border-purple-100 text-purple-900"
+                          };
+
+                    return (
+                      <div
+                        key={idx}
+                        className={`p-5 rounded-2xl bg-slate-50/70 border ${theme.border} space-y-3 flex flex-col justify-between transition-all duration-200 shadow-sm hover:shadow-md`}
+                      >
+                        <div className="space-y-2.5">
+                          <div className="flex items-center justify-between">
+                            <span
+                              className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${theme.badge}`}
+                            >
+                              {p.style}
+                            </span>
+                            <div className="flex items-center gap-1">
+                              <button
+                                type="button"
+                                onClick={() => handleSpeech(p.text)}
+                                className="btn btn-circle btn-xs btn-ghost text-slate-500 hover:text-indigo-600 hover:bg-slate-200/60"
+                                title="Listen to pronunciation"
+                              >
+                                <Volume2 size={15} />
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => handleCopyParaphrase(p.text, idx)}
+                                className="btn btn-circle btn-xs btn-ghost text-slate-500 hover:text-indigo-600 hover:bg-slate-200/60"
+                                title="Copy paraphrased sentence"
+                              >
+                                {copiedParaphraseIdx === idx ? (
+                                  <Check size={15} className="text-emerald-600" />
+                                ) : (
+                                  <Copy size={15} />
+                                )}
+                              </button>
+                            </div>
+                          </div>
+
+                          <p className={`text-base sm:text-lg font-bold leading-relaxed ${theme.highlight}`}>
+                            "{p.text}"
+                          </p>
+
+                          {p.bengaliMeaning && (
+                            <div className={`p-3 rounded-xl border text-xs sm:text-sm font-medium ${theme.bengaliBg}`}>
+                              <span className="font-bold">🇧🇩 বাংলা অর্থ:</span> {p.bengaliMeaning}
+                            </div>
+                          )}
+                        </div>
+
+                        {p.explanation && (
+                          <p className="text-xs text-slate-500 pt-1 border-t border-slate-200/60">
+                            💡 <span className="font-medium">{p.explanation}</span>
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}
