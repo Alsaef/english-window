@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   Sparkles,
@@ -18,7 +18,9 @@ import {
   Languages,
   Clock,
   Lock,
-  Repeat
+  Repeat,
+  Mic,
+  MicOff
 } from "lucide-react";
 
 export default function SentenceChecker() {
@@ -29,6 +31,10 @@ export default function SentenceChecker() {
   const [copied, setCopied] = useState(false);
   const [copiedParaphraseIdx, setCopiedParaphraseIdx] = useState(null);
   const [quota, setQuota] = useState({ remaining: null, limit: 15, retryAfterMinutes: 0, ip: "" });
+  const [isListening, setIsListening] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(true);
+  const recognitionRef = useRef(null);
+  const baseSentenceRef = useRef("");
 
   const API_BASE_URL =
     import.meta.env.VITE_API_URL ||
@@ -89,6 +95,136 @@ export default function SentenceChecker() {
       if (interval) clearInterval(interval);
     };
   }, [quota.remaining, quota.retryAfterMinutes]);
+
+  // Detect speech recognition support & cleanup on unmount
+  useEffect(() => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setSpeechSupported(false);
+    }
+    return () => {
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.abort();
+        } catch (e) {
+          // ignore
+        }
+      }
+    };
+  }, []);
+
+  // Stop microphone listening
+  const stopListening = () => {
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.stop();
+      } catch (e) {
+        // ignore
+      }
+    }
+    setIsListening(false);
+  };
+
+  // Start speech recognition / microphone voice typing
+  const startListening = () => {
+    if (quota.remaining === 0) {
+      setError(
+        `Rate limit reached for your IP. Please wait about ${quota.retryAfterMinutes || 15} minutes before checking more sentences.`
+      );
+      return;
+    }
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      setError(
+        "Voice typing (Speech Recognition) is not supported in this browser. Please use Google Chrome, Microsoft Edge, or Safari to use the microphone."
+      );
+      return;
+    }
+
+    if (isListening) {
+      stopListening();
+      return;
+    }
+
+    try {
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.abort();
+        } catch (e) {}
+      }
+
+      const recognition = new SpeechRecognition();
+      recognitionRef.current = recognition;
+
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = "en-US";
+
+      baseSentenceRef.current = sentence.trim();
+
+      recognition.onstart = () => {
+        setIsListening(true);
+        setError("");
+      };
+
+      recognition.onresult = (event) => {
+        let finalTranscript = "";
+        let interimTranscript = "";
+
+        for (let i = 0; i < event.results.length; i++) {
+          const item = event.results[i];
+          const transcript = item[0].transcript;
+          if (item.isFinal) {
+            finalTranscript += transcript;
+          } else {
+            interimTranscript += transcript;
+          }
+        }
+
+        let spoken = (finalTranscript + interimTranscript).trim();
+        if (spoken && !baseSentenceRef.current) {
+          spoken = spoken.charAt(0).toUpperCase() + spoken.slice(1);
+        }
+
+        const base = baseSentenceRef.current.trim();
+        const combined = base ? `${base} ${spoken}` : spoken;
+
+        setSentence(combined.slice(0, 500));
+      };
+
+      recognition.onerror = (event) => {
+        console.warn("Speech recognition error:", event.error);
+        if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+          setError(
+            "Microphone permission was denied. Please allow microphone permissions in your browser to speak your sentence."
+          );
+        } else if (event.error === "no-speech") {
+          // User paused, no need to show an alarming error
+        } else if (event.error === "audio-capture") {
+          setError("No microphone was detected. Please connect a microphone and try again.");
+        } else if (event.error === "network") {
+          setError("Speech recognition network error. Please check your internet connection.");
+        } else if (event.error !== "aborted") {
+          setError(`Microphone error: ${event.error}`);
+        }
+        setIsListening(false);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognition.start();
+    } catch (err) {
+      console.error("Failed to start speech recognition:", err);
+      setError("Could not activate microphone. Please check your browser permissions.");
+      setIsListening(false);
+    }
+  };
 
   // Text-to-Speech audio pronunciation
   const handleSpeech = (text) => {
@@ -376,6 +512,7 @@ export default function SentenceChecker() {
 
   const handleCheck = async (e) => {
     if (e) e.preventDefault();
+    if (isListening) stopListening();
     if (!sentence.trim()) return;
 
     // Check if client quota is already exhausted
@@ -446,11 +583,13 @@ export default function SentenceChecker() {
 
   const handleSelectSample = (sample) => {
     if (quota.remaining === 0) return;
+    if (isListening) stopListening();
     setSentence(sample.text);
     setError("");
   };
 
   const handleClear = () => {
+    if (isListening) stopListening();
     setSentence("");
     setResult(null);
     setError("");
@@ -533,16 +672,39 @@ export default function SentenceChecker() {
                 rows={4}
                 maxLength={500}
                 placeholder={
-                  quota.remaining === 0
+                  isListening
+                    ? "🎙️ Listening to your voice... Speak your English sentence now..."
+                    : quota.remaining === 0
                     ? `Rate limit reached for your IP. Please wait about ${quota.retryAfterMinutes || 15} minutes before checking more sentences.`
-                    : "Type or paste your English sentence here... (e.g., 'She don't know where is the station.')"
+                    : "Type, paste, or speak your English sentence here... (e.g., 'She don't know where is the station.')"
                 }
-                className={`w-full text-base sm:text-lg text-slate-800 placeholder-slate-400 p-4 sm:p-5 rounded-2xl border transition-all outline-none resize-none ${
-                  quota.remaining === 0
+                className={`w-full text-base sm:text-lg text-slate-800 placeholder-slate-400 p-4 sm:p-5 pr-14 rounded-2xl border transition-all outline-none resize-none ${
+                  isListening
+                    ? "border-rose-400 ring-4 ring-rose-100 bg-rose-50/20"
+                    : quota.remaining === 0
                     ? "bg-slate-50 border-rose-200 cursor-not-allowed opacity-80"
                     : "border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
                 }`}
               />
+
+              {/* IN-TEXTAREA QUICK MICROPHONE BUTTON */}
+              <button
+                type="button"
+                onClick={isListening ? stopListening : startListening}
+                disabled={quota.remaining === 0}
+                title={
+                  isListening
+                    ? "Listening... Click to stop"
+                    : "Speak sentence into microphone"
+                }
+                className={`absolute right-3.5 top-3.5 p-2.5 rounded-xl transition-all shadow-xs ${
+                  isListening
+                    ? "bg-rose-600 text-white animate-pulse hover:bg-rose-700 ring-4 ring-rose-200"
+                    : "bg-slate-100/90 hover:bg-indigo-100 text-slate-600 hover:text-indigo-700 border border-slate-200/80 active:scale-95"
+                }`}
+              >
+                {isListening ? <MicOff size={18} /> : <Mic size={18} />}
+              </button>
 
               <div className="flex items-center justify-between mt-2 px-1 text-xs text-slate-400">
                 <span>Supports up to 500 characters</span>
@@ -550,9 +712,69 @@ export default function SentenceChecker() {
               </div>
             </div>
 
+            {/* LIVE VOICE RECORDING STATUS BANNER */}
+            {isListening && (
+              <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-rose-50 via-purple-50 to-indigo-50 border border-rose-200 shadow-xs animate-in fade-in slide-in-from-top-1">
+                <div className="flex items-center gap-3">
+                  <span className="relative flex h-3 w-3 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-600"></span>
+                  </span>
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-rose-900">
+                      <span>Listening to your voice... (মাইক্রোফোনে শুনছি)</span>
+                      <span className="text-[10px] uppercase font-extrabold tracking-wider bg-rose-200/80 text-rose-800 px-2 py-0.5 rounded-full">
+                        Live Voice Typing
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-600">
+                      Speak your sentence in English — your words will type automatically into the box!
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={stopListening}
+                  className="btn btn-xs rounded-xl bg-white hover:bg-rose-100 text-rose-700 border border-rose-300 font-bold px-3 shrink-0 shadow-2xs"
+                >
+                  Done Speaking
+                </button>
+              </div>
+            )}
+
             {/* ACTION BUTTONS */}
             <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                {/* Voice Typing Button */}
+                {isListening ? (
+                  <button
+                    type="button"
+                    onClick={stopListening}
+                    className="btn btn-sm rounded-xl font-semibold border border-rose-300 bg-rose-50 text-rose-700 hover:bg-rose-100 flex items-center gap-2 shadow-xs transition-all animate-pulse"
+                    title="Click to stop microphone recording"
+                  >
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600"></span>
+                    </span>
+                    <MicOff size={15} className="text-rose-600" />
+                    <span>Stop Voice Typing</span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={startListening}
+                    disabled={quota.remaining === 0}
+                    className="btn btn-sm rounded-xl font-medium border border-slate-200 bg-white hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-700 text-slate-700 transition-all flex items-center gap-2 shadow-2xs group"
+                    title="Speak into microphone to type automatically"
+                  >
+                    <div className="w-5 h-5 rounded-full bg-indigo-50 group-hover:bg-indigo-100 flex items-center justify-center text-indigo-600 transition-colors">
+                      <Mic size={13} />
+                    </div>
+                    <span>Speak (মাইক্রোফোন)</span>
+                  </button>
+                )}
+
                 {sentence && (
                   <button
                     type="button"
